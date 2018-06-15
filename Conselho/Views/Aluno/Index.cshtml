@@ -1,0 +1,38 @@
+﻿@model IEnumerable<Conselho.Models.Aluno>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.AlunoID) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model.CGM)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Nome)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Situacao)</th>
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.AlunoID)</td>
+                <td>@Html.DisplayFor(modelItem => item.CGM)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @Html.ActionLink("Edit", "Edit", new { id = item.AlunoID }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.AlunoID }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.AlunoID })
+                        </small>
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -1,0 +1,40 @@
+﻿@model Conselho.Models.Turma
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h3> Deseja Realmente Excluir a Turma? </h3>
+<br />
+<div>
+    <div class="card-deck" style="width: 240px">
+        <div class="card w-75">
+            <ul>
+                <li class="list-group-item">
+                    <img class="card-img-top" style="width:100%"
+                         src="https://canaldoensino.com.br/blog/wp-content/uploads/2017/09/livros-infantis-downlaod.jpg"
+                         alt="Card image cap">
+                    <div class="card-body text-info">
+                        <h3>&nbsp;  @Html.DisplayNameFor(model => model.TurmaID)  :  @Html.DisplayFor(model => model.TurmaID)</h3>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><h4>@Html.DisplayFor(model => model.Serie)@Html.DisplayFor(model => model.Nome)</h4></li>
+                            <li class="list-group-item"><h4>@Html.DisplayFor(model => model.Turno)</h4>
+                        </ul>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <a class="form-actions no-color">
+                                        <input type="submit" value="Delete" class="btn btn-default" /> |
+                                        @Html.ActionLink("Back to List", "Index")
+                                    </a>
+                                }
+                            </small>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+

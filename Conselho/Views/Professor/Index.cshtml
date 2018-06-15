@@ -1,0 +1,27 @@
+﻿@model  IEnumerable<Conselho.Models.Professor>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.ProfessorID) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Nome)</th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Situacao)</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+            </tr>
+        }
+    </table>
+</div>

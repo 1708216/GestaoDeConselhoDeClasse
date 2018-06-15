@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title- My ASP.NET Application</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <!-- Menu superior do Layout de Tela-->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header" style="background-color: !important;">
+            <div class="mdl-layout__header-row">
+                <!--   Título  -->
+                <span class="mdl-layout-title">@Html.ActionLink("Sistema Escola", "Index", "Home", new { area = "" }, new { @class = "" })</span>
+                <!--     -->
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large--screen-only">
+                    <a class="mdl-navigation__link" href="">@Html.Partial("_LoginPartial")</a>
+                </nav>
+            </div>
+        </header>
+        <!-- Barra de navegação lateral -->
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title" style="color:#000 !important;"></span>
+            <nav class="mdl-navigation">
+                <div style="background:#d0d0d0; width:100%; height:1px;"></div>
+                <h4 class="mdl-navigation__link" style="font-size:larger !important; color:#FFF !important; background-color:midnightblue !important;">EDIÇÃO</h4>
+                <a class="mdl-navigation__link" href="\Cadastro\Index"><i class="fas fa-address-card"></i> &emsp;Cadastrar</a>
+                @*<a class="mdl-navigation__link" href="\Turma\Index"><i class="fas fa-address-card"></i> &emsp;Matricular</a>*@
+                <a class="mdl-navigation__link" href="\FichaDeMatricula\Index"><i class="fas fa-address-card"></i> &emsp;Matricular</a>
+                <a class="mdl-navigation__link" href=""><i class="fas fa-address-card"></i> &emsp;Distribuir Aulas</a>
+                <div style="background:#d0d0d0; width:100%; height:1px;"></div>
+                <h4 class="mdl-navigation__link" style="font-size:larger !important; color:#FFF !important; background-color:midnightblue!important;">CONSULTAS</h4>
+                <a class="mdl-navigation__link" href="\Aluno\Index"><i class="fas fa-address-card"></i> &emsp;Alunos</a>
+                <a class="mdl-navigation__link" href="\Disciplina\Index"><i class="fas fa-address-card"></i> &emsp;Disciplina</a>
+                <a class="mdl-navigation__link" href="\Professor\Index"><i class="fas fa-address-card"></i> &emsp;Professor</a>
+                <a class="mdl-navigation__link" href="\Turma\Index"><i class="fas fa-address-card"></i> &emsp;Turma</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <div class="container">
+                    @RenderBody()
+                </div>
+            </div>
+        </main>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

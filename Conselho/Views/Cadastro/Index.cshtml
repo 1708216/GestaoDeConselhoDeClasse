@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<h2>Cadastros</h2>
+
+<div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
+    <div class="mdl-tabs__tab-bar">
+        <a href="#alunos" class="mdl-tabs__tab is-active">Alunos</a>
+        <a href="#disciplinas" class="mdl-tabs__tab">Disciplinas</a>
+        <a href="#professores" class="mdl-tabs__tab">Professores</a>
+        <a href="#turmas" class="mdl-tabs__tab">Turmas</a>
+    </div>
+    <div class="mdl-tabs__panel is-active" id="alunos">
+        @{
+            Html.RenderPartial("_CadastroAluno");
+        }
+    </div>
+    <div class="mdl-tabs__panel" id="disciplinas">
+        @{
+            Html.RenderPartial("_CadastroDisciplina");
+        }
+    </div>
+    <div class="mdl-tabs__panel" id="professores">
+        @{
+            Html.RenderPartial("_CadastroProfessor");
+        }
+    </div>
+    <div class="mdl-tabs__panel" id="turmas">
+        @{
+            Html.RenderPartial("_CadastroTurma");
+        }
+    </div>
+</div>
+

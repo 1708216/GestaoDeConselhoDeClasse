@@ -1,0 +1,21 @@
+﻿
+@*@model Conselho.Models.MatriculaViewModel*@
+
+@{
+    ViewBag.Title = "Matricular";
+}
+
+<h2>Matricular</h2>
+<br />
+<h3>Aluno: </h3>
+<h3>@Model.alunosParaMatricular.Nome</h3>
+<h3>CGM : </h3>
+<h3>@Model.alunosParaMatricular.CGM</h3>
+<h3>@Model.alunosParaMatricular.Foto</h3>
+<br />
+
+@foreach (var item in Model.turmasParaMatricula)
+{
+    <a>@item.Nome</a>
+}
+
