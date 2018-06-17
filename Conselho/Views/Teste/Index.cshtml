@@ -1,0 +1,27 @@
+﻿@model IEnumerable<Conselho.Models.FichaDeMatricula>
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+<div class="table">
+    <table class="table table-striped">
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.FichaDeMatriculaID)</td>
+            <td>@Html.DisplayFor(modelItem => item._Aluno.AlunoID)</td>
+            <td>@Html.DisplayFor(modelItem => item._Aluno.CGM)</td>
+            <td>@Html.DisplayFor(modelItem => item._Aluno.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item._Aluno.Situacao)</td>
+        </tr>
+        }
+    </table>
+</div>
+
+
+
+
+<h2>Index</h2>
+

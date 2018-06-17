@@ -1,4 +1,4 @@
-﻿@model Conselho.Models.MatriculaViewModel
+﻿@model Conselho.Models.Turma
 
 @{
     ViewBag.Title = "Details";
@@ -10,13 +10,13 @@
 <h2>Matricular</h2>
 <br />
 
-<div>
+
     <div class="jumbotron jumbotron-fluid">
         <div class="container">
-            <h1 class="display-4">@Model.alunosParaMatricular.Nome</h1>
+            <h1 class="display-4">@Model.turma.Nome</h1>
             <p class="lead">
-                <h3>@Model.alunosParaMatricular.CGM</h3>
-                <h3>@Model.alunosParaMatricular.Foto</h3>
+                <h3>@Model.turma.Serie</h3>
+                <h3>@Model.turma.Turno</h3>
             </p>
         </div>
     </div>
@@ -24,22 +24,13 @@
     <h1>Turmas </h1>
 
 
-    @foreach (var item in Model.turmasParaMatricula)
+    @foreach (var item in Model.alunosParaMatricular)
     {
-
-
-        <tr>
+         <tr>
             <th>
-                Id: @item.TurmaID  Serie:@item.Serie &emsp; Turma:@item.Nome  &emsp; Turno: @item.Turno
+                Id: @item.Nome Serie:@item.Situacao &emsp; Turma:@item.CGM  &emsp;
             </th>
-            <td>
-                <p class="card-text">
-                    <small class="text-muted">
-                        @Html.ActionLink("Efetivar Matricula", "EfetuarMatricula", new { idTurma = item.TurmaID, idAluno = Model.alunosParaMatricular.AlunoID })
-                    </small>
-                </p>
-            </td>
         </tr>
-
+   
     }
-</div>
+

@@ -12,7 +12,8 @@ namespace Conselho.Models
         public string Nome { get; set; }
         public string Turno { get; set; }
 
-        public List <FichaDeMatricula> matriculas = new List<FichaDeMatricula>();
+        public virtual List<FichaDeMatricula> _Matriculas {get;set;}
+        public virtual List<FichaDeDistribuicao> _DistribuicaoAula { get; set; }  
         
     }
 }

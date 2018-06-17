@@ -1,0 +1,33 @@
+﻿@model Conselho.Models.DistribuicaoDeAulaViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<br />
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id Professor </th>
+                <th scope="col">Nome</th>
+                <th scope="col">Situação</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.ListaProfessores)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td>@Html.DropDownListFor(
+                   m => m.itemSelecionado,
+                   new SelectList(Model.ListaDisciplinas,"DisciplinaID","Nome"),
+                   new { @class = "form-control" } )</td>
+            </tr>
+        }
+    </table>
+</div>
+

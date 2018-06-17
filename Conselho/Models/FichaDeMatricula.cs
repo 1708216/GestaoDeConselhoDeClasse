@@ -12,5 +12,8 @@ namespace Conselho.Models
         public int AlunoID { get; set; }
         public virtual Aluno _Aluno { get; set; }
 
+        public int TurmaID { get; set; }
+        public virtual Turma _Turma { get; set; }
+
     }
 }

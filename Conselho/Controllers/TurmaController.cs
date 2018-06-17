@@ -20,7 +20,15 @@ namespace Conselho.Controllers
         // GET: Turma/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            //MeuContexto contexto = new MeuContexto();
+            //MatriculaViaTurmaViewModel model = new MatriculaViaTurmaViewModel();
+
+            //model.turma = contexto.Turmas.Find(id);
+            //model.alunosParaMatricular = contexto.Alunos.ToList();
+                 
+
+            return View(/*model*/);
         }
 
         // GET: Turma/Create

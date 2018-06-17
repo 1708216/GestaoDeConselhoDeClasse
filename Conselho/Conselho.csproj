@@ -193,10 +193,12 @@
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
+    <Compile Include="Controllers\FichaDeDistribuicaoController.cs" />
     <Compile Include="Controllers\FichaDeMatriculaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\TesteController.cs" />
     <Compile Include="Controllers\TurmaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -206,11 +208,15 @@
     <Compile Include="Models\Dal\ConselhoDBInitializer.cs" />
     <Compile Include="Models\Dal\MeuContexto.cs" />
     <Compile Include="Models\Disciplina.cs" />
+    <Compile Include="Models\DistribuicaoDeAulaViewModel.cs" />
+    <Compile Include="Models\FichaDeDistribuicao.cs" />
     <Compile Include="Models\FichaDeMatricula.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MatriculaViaTurmaViewModel.cs" />
     <Compile Include="Models\MatriculaViewModel.cs" />
     <Compile Include="Models\Professor.cs" />
+    <Compile Include="Models\TesteViewModel.cs" />
     <Compile Include="Models\Turma.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -340,6 +346,9 @@
     <Content Include="Views\FichaDeMatricula\Index.cshtml" />
     <Content Include="Views\FichaDeMatricula\Matricular.cshtml" />
     <Content Include="Views\FichaDeMatricula\MatricularViaSala.cshtml" />
+    <Content Include="Views\FichaDeMatricula\Index2.cshtml" />
+    <Content Include="Views\Teste\Index.cshtml" />
+    <Content Include="Views\FichaDeDistribuicao\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
