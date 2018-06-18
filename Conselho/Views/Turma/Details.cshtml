@@ -6,31 +6,37 @@
 
 <h1>Alunos Matriculados </h1>
 
-<br />
-<h2>Matricular</h2>
-<br />
-
-
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">@Model.turma.Nome</h1>
-            <p class="lead">
-                <h3>@Model.turma.Serie</h3>
-                <h3>@Model.turma.Turno</h3>
-            </p>
-        </div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <h1 class="display-5"> ID Turma : @Model.TurmaID</h1>
+        <p class="lead">
+            <h3>
+                @Model.Serie @Model.Nome &emsp; @Model.Turno</h3>
+</p>
     </div>
+</div>
 
-    <h1>Turmas </h1>
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nome do Aluno </th>
+                <th scope="col"> Situação </th>
+            </tr>
+        </thead>
 
 
-    @foreach (var item in Model.alunosParaMatricular)
+        @foreach (var item in Model._Matriculas)
     {
-         <tr>
-            <th>
-                Id: @item.Nome Serie:@item.Situacao &emsp; Turma:@item.CGM  &emsp;
-            </th>
+        <tr>
+            <td>@item._Aluno.AlunoID </td>
+            <td>@item._Aluno.Nome </td>
+            <td>@item._Aluno.Situacao</td>
         </tr>
-   
-    }
+}
+    </table>
+</div>
+
+
 

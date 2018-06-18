@@ -13,5 +13,6 @@ namespace Conselho.Models.Dal
         public DbSet<Professor> Professores { get; set; }
         public DbSet<Turma> Turmas { get; set; }
         public DbSet<FichaDeMatricula> FichasDeMatricula { get; set; }
+        public DbSet<FichaDeDistribuicao> FichasDeDistribuicao { get; set; }
     }
 }

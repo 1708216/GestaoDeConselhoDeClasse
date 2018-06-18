@@ -21,14 +21,10 @@ namespace Conselho.Controllers
         public ActionResult Details(int id)
         {
 
-            //MeuContexto contexto = new MeuContexto();
-            //MatriculaViaTurmaViewModel model = new MatriculaViaTurmaViewModel();
+            MeuContexto contexto = new MeuContexto();
+            Turma turma = contexto.Turmas.Find(id);
 
-            //model.turma = contexto.Turmas.Find(id);
-            //model.alunosParaMatricular = contexto.Alunos.ToList();
-                 
-
-            return View(/*model*/);
+            return View(turma);
         }
 
         // GET: Turma/Create

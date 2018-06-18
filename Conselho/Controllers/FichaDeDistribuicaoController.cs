@@ -19,6 +19,7 @@ namespace Conselho.Controllers
 
             model.ListaDisciplinas = contexto.Disciplinas.ToList();
             model.ListaProfessores = contexto.Professores.ToList();
+            model.ListaTurmas = contexto.Turmas.ToList();
 
             return View(model);
         }

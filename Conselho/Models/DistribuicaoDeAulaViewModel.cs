@@ -8,8 +8,10 @@ namespace Conselho.Models
     public class DistribuicaoDeAulaViewModel
     {
         public int itemSelecionado { get; set; }
-        public List<Disciplina> ListaDisciplinas { get; set; }
-        public List<Professor> ListaProfessores { get; set; }
+
+        public virtual List<Turma> ListaTurmas { get; set; }
+        public virtual List<Disciplina> ListaDisciplinas { get; set; }
+        public virtual List<Professor> ListaProfessores { get; set; }
 
      }
 }
