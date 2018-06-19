@@ -6,36 +6,44 @@
 }
 
 <br />
-<h2>Matricular</h2>
-<br />
-
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-4">TURMAS</h1>
-            <p class="lead">
-                <h3>  Id: @Model.turma.TurmaID  Serie:@Model.turma.Serie &emsp; Turma:@Model.turma.Nome  &emsp; Turno: @Model.turma.Turno </h3>
-            </p>
-        </div>
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+        <p class="lead">
+            <h3>  Id da Turma : @Model.turma.TurmaID </h3>
+            <br />
+            <h3> Serie:  @Model.turma.Serie &emsp; Turma:  @Model.turma.Nome  &emsp; Turno: @Model.turma.Turno </h3>
+        </p>
     </div>
+</div>
 
-    <h1>Alunos </h1>
+<h3>Lista de Alunos </h3>
 
-    @foreach (var item in Model.alunosParaMatricular)
-    {
-
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+    <thead>
         <tr>
-            <th>
-                Id: @item.AlunoID  Serie:@item.CGM &emsp; Turma:@item.Nome  &emsp; Turno: @item.Situacao
-            </th>
-            <td>
-                <p class="card-text">
-                    <small class="text-muted">
-                        @Html.ActionLink("Efetivar Matricula", "EfetuarMatricula", new { idTurma = Model.turma.TurmaID, idAluno = item.AlunoID })
-                    </small>
-                </p>
-            </td>
+            <th class="mdl-data-table__cell--non-numeric">Id Aluno</th>
+            <th>CGM</th>
+            <th>Nome</th>
+            <th>Situação</th>
+            <th>Matricular Aluno</th>
         </tr>
-  
-    }
-
-
+    </thead>
+    <tbody>
+        @foreach (var item in Model.alunosParaMatricular)
+        {
+            <tr>
+                <td class="mdl-data-table_____cell--non-numeric"> @item.AlunoID </td>
+                <td>@item.CGM </td>
+                <td>@item.Nome </td>
+                <td>@item.Situacao </td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @Html.ActionLink("Efetivar Matricula", "EfetuarMatricula", new { idTurma = Model.turma.TurmaID, idAluno = item.AlunoID })
+                        </small>
+                    </p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
