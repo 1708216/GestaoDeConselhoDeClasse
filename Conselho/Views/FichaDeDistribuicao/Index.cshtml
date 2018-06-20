@@ -1,31 +1,62 @@
-﻿@model Conselho.Models.DistribuicaoDeAulaViewModel
+﻿@model IEnumerable<Conselho.Models.Turma>
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .demo-card-wide.mdl-card {
+        width: 512px;
+    }
+
+    .demo-card-wide > .mdl-card__title {
+        color: black;
+        font-weight: bold !important;
+        height: 176px;
+        background: url('https://canaldoensino.com.br/blog/wp-content/uploads/2017/09/livros-infantis-downlaod.jpg') center;
+    }
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
 <br />
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Id Professor </th>
-                <th scope="col">Nome</th>
-                <th scope="col">Situação</th>
-            </tr>
-        </thead>
-        @foreach (var item in Model.ListaProfessores)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
-                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
-                <td>@Html.DropDownListFor(
-                   m => m.itemSelecionado,
-                   new SelectList(Model.ListaDisciplinas,"DisciplinaID","Nome"),
-                   new { @class = "form-control" } )</td>
-            </tr>
-        }
-    </table>
+<div class="row justify-content-center">
+    @foreach (var item in Model)
+    {
+        <div class="demo-card-wide mdl-card mdl-shadow--2dp col-4 m-1">
+            <br />
+            <div class="mdl-card__title">
+                <h2 class="mdl-card__title-text bg-white">ID : @Html.DisplayFor(modelItem => item.TurmaID) &emsp;</h2>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <h5>@item.Serie</h5>
+                <hr />
+                <h5>@item.Turno</h5>
+            </div>
+            <div class="mdl-card__actions mdl-card--border">
+                <a class="">
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                </a>
+                <a class="">
+                    @Html.ActionLink("Details", "Details", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                </a>
+                <a class="">
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                </a>
+                <a class="">
+                    @Html.ActionLink("Distribuir Aula", "AtribuicaoDeAula", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                </a>
+            </div>
+            <div class="mdl-card__menu">
+                <br />
+                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                    <i class="material-icons bg-dark">add</i>
+                </button>
+            </div>
+        </div>
+    }
 </div>
+<br />
 

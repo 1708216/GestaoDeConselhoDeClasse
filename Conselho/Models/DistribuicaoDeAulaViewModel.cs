@@ -9,7 +9,7 @@ namespace Conselho.Models
     {
         public int itemSelecionado { get; set; }
 
-        public virtual List<Turma> ListaTurmas { get; set; }
+        public virtual Turma _turma { get; set; }
         public virtual List<Disciplina> ListaDisciplinas { get; set; }
         public virtual List<Professor> ListaProfessores { get; set; }
 

@@ -14,14 +14,33 @@ namespace Conselho.Controllers
         public ActionResult Index()
         {
 
+
+            MeuContexto contexto = new MeuContexto();
+            List<Turma> turmas = contexto.Turmas.ToList();
+            return View(turmas);
+            
+            
+    
+        }
+
+
+        public ActionResult AtribuicaoDeAula(int id)
+        {
+
             MeuContexto contexto = new MeuContexto();
             DistribuicaoDeAulaViewModel model = new DistribuicaoDeAulaViewModel();
-
+            
             model.ListaDisciplinas = contexto.Disciplinas.ToList();
             model.ListaProfessores = contexto.Professores.ToList();
-            model.ListaTurmas = contexto.Turmas.ToList();
+            model._turma = contexto.Turmas.Find(id);
 
             return View(model);
+
         }
+
+
+
+
+
     }
 }

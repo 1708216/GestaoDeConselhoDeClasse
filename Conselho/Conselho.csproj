@@ -349,6 +349,7 @@
     <Content Include="Views\FichaDeMatricula\Index2.cshtml" />
     <Content Include="Views\Teste\Index.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\Index.cshtml" />
+    <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
