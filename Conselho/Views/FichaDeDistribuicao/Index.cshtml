@@ -21,8 +21,41 @@
         color: #fff;
     }
 </style>
+
 <br />
-<div class="row justify-content-center">
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model.TurmaID) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Serie)/@Html.DisplayNameFor(model => model.Nome) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model.Turno)</th>
+
+
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TurmaID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Serie) @Html.DisplayFor(modelItem => item.Nome)     </td>
+                <td>@Html.DisplayFor(modelItem => item.Turno)</td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @Html.ActionLink("Distribuir Aula", "AtribuicaoDeAula", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                        </small>
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+
+@*<div class="row justify-content-center">
     @foreach (var item in Model)
     {
         <div class="demo-card-wide mdl-card mdl-shadow--2dp col-4 m-1">
@@ -58,5 +91,5 @@
         </div>
     }
 </div>
-<br />
+<br />*@
 
