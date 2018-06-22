@@ -13,7 +13,7 @@ namespace Conselho.Controllers
         public ActionResult Index()
         {
             MeuContexto contexto = new MeuContexto();
-            //List<Aluno> alunos = contexto.Alunos.ToList();
+            List<Aluno> alunos = contexto.Alunos.ToList();
 
             return View(alunos);
         }
