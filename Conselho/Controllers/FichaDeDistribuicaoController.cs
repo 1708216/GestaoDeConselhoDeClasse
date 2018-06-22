@@ -14,13 +14,10 @@ namespace Conselho.Controllers
         public ActionResult Index()
         {
 
-
             MeuContexto contexto = new MeuContexto();
             List<Turma> turmas = contexto.Turmas.ToList();
             return View(turmas);
-            
-            
-    
+
         }
 
 
@@ -28,19 +25,65 @@ namespace Conselho.Controllers
         {
 
             MeuContexto contexto = new MeuContexto();
-            DistribuicaoDeAulaViewModel model = new DistribuicaoDeAulaViewModel();
-            
-            model.ListaDisciplinas = contexto.Disciplinas.ToList();
-            model.ListaProfessores = contexto.Professores.ToList();
-            model._turma = contexto.Turmas.Find(id);
+            //DistribuicaoDeAulaViewModel model = new DistribuicaoDeAulaViewModel();
 
-            return View(model);
+            //model.ListaDisciplinas = contexto.Disciplinas.ToList();
+            ViewBag.ProfessorID = new SelectList(contexto.Professores, "ProfessorID", "Nome");
+            Turma t = contexto.Turmas.Find(id);
+
+            List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
+
+            List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
+
+            foreach (Disciplina d in disciplinas)
+            {
+                fichas.Add(new FichaDeDistribuicao() { TurmaID = t.TurmaID, DisciplinaID = d.DisciplinaID });
+            }
+
+            return View(fichas);
 
         }
 
+        [HttpPost]
+        //public ActionResult DistribuiAula( int idDisciplina,int idTurma, int idProf)
+        public ActionResult AtribuicaoDeAula(IEnumerable<FichaDeDistribuicao> fichas)
+        {
+            MeuContexto contexto = new MeuContexto();
+
+            //List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
+
+            //List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
+
+            //foreach (Disciplina d in disciplinas)
+            //{
+            //    fichas.Add(new FichaDeDistribuicao() { TurmaID = 1, DisciplinaID = d.DisciplinaID });
+            //}
+
+            if(ModelState.IsValid)
+            {
+
+            }
+
+
+            ViewBag.ProfessorID = new SelectList(contexto.Professores, "ProfessorID", "Nome");
+
+
+            return View(fichas);
+        }
+
+        public ActionResult AdicionarProfessor(int Id)
+        {
+
+
+            MeuContexto contexto = new MeuContexto();
+
+
+            List<Professor> lista = contexto.Professores.ToList();
 
 
 
+            return View(lista);
+        }
 
     }
 }

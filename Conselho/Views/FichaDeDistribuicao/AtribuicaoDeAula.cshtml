@@ -1,34 +1,52 @@
-﻿@model Conselho.Models.DistribuicaoDeAulaViewModel
+﻿@model  IEnumerable<Conselho.Models.FichaDeDistribuicao>
 
 @{
- 
+
 }
-
-@Model._turma.Turno
-
 <br />
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">Id Professor </th>
-                <th scope="col">Nome</th>
-                <th scope="col">Situação</th>
-            </tr>
-        </thead>
-        @foreach (var item in Model.ListaProfessores)
-        {
-            <tr>
-                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
-                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
-                <td>
-                    @Html.DropDownListFor(
-                        m => m.itemSelecionado,
-                        new SelectList(Model.ListaDisciplinas, "DisciplinaID", "Nome"),
-                        new { @class = "form-control" })
-            </td>
-        </tr>
-    }
-    </table>
-</div>
+@using (Html.BeginForm())
+{
+    <div class="jumbotron">
+        <h1 class="display-4">Opa! Deu Certo</h1>
+        <br />
+        @*<p class="display-4">Id: @Model.TurmaID &emsp; Turma: @Model._Turma.Serie  @Model._Turma.Nome    </p>
+        <hr class="my-4">
+        <p class="display-4"> @Model._Turma.Turno</p>*@
+        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    </div>
+    <h3>Dados da distribuição de aula </h3>
+    <br />
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Id Disciplina </th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Carga Horária</th>
+                    <th scope="col">Professores</th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.DisciplinaID)</td>
+                    <td>@Html.DisplayFor(modelItem => item._Disciplina.Nome)</td>
+                    <td>@Html.DisplayFor(modelItem => item._Disciplina.CargaHoraria)</td>
+
+
+
+                    <td>
+                        @Html.DropDownList("ProfessorID", null , htmlAttributes : new {@class  = " form-control "})
+                    </td>
+
+                    @*@{
+                        Html.RenderPartial("_adicionarProfessor");
+                    }*@
+
+
+                </tr>
+            }
+        </table>
+        <input type="submit" value="Enviar" />
+    </div>
+}

@@ -1,0 +1,16 @@
+﻿@model  Conselho.Models.FichaDeDistribuicao
+
+<br />
+<td>@Html.DisplayFor(m => Model.DisciplinaID)</td>
+<td>@Html.DisplayFor(m => Model._Turma.Nome)</td>
+<td>@Html.DisplayFor(m => Model._Disciplina.CargaHoraria)</td>
+<td>
+    @Html.DropDownList("ProfessorID",
+                    new SelectList(ViewBag.ListaProfessores, "ProfessorID", "Nome"),
+                    new { @class = "form-control" }
+                    )
+</td>
+
+
+
+

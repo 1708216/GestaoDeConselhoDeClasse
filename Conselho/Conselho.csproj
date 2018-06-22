@@ -350,6 +350,7 @@
     <Content Include="Views\Teste\Index.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\Index.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
+    <Content Include="Views\FichaDeDistribuicao\_adicionaProfessor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
