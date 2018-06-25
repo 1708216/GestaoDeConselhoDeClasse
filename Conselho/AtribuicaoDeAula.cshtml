@@ -25,23 +25,33 @@
         </thead>
         @foreach (var item in Model.ListaProfessores)
         {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
-            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-            <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
-            <td>
-                <p class="card-text">
-                    <small class="text-muted">
-                        @Html.ActionLink("Disciplina", "EfetivaDistribuicao", new { idTurma = Model._turma.TurmaID, idProf=item.ProfessorID  }, new { @class = "mdl -button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
-                    </small>
-                </p>
-            </td>
-        </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td> <button class="btn btn-default details" data-id="@item.ProfessorID">disciplina</button></td>
+            </tr>
         }
     </table>
 </div>
+<div class="modal" id="modal">
+    @{
+        Html.RenderPartial("_testepartial");
+    }
+</div>
 
 
-
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Teste?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
+}
 
 
