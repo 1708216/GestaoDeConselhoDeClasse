@@ -193,6 +193,7 @@
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\CadastroController.cs" />
     <Compile Include="Controllers\DisciplinaController.cs" />
+    <Compile Include="Controllers\FichaDeConselhoController.cs" />
     <Compile Include="Controllers\FichaDeDistribuicaoController.cs" />
     <Compile Include="Controllers\FichaDeMatriculaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,6 +211,7 @@
     <Compile Include="Models\Dal\MeuContexto.cs" />
     <Compile Include="Models\Disciplina.cs" />
     <Compile Include="Models\DistribuicaoDeAulaViewModel.cs" />
+    <Compile Include="Models\FichaDeConselho.cs" />
     <Compile Include="Models\FichaDeDistribuicao.cs" />
     <Compile Include="Models\FichaDeMatricula.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -353,6 +355,7 @@
     <Content Include="AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\EfetivaDistribuicao.cshtml" />
+    <Content Include="Views\FichaDeConselho\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

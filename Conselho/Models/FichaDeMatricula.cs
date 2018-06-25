@@ -15,5 +15,8 @@ namespace Conselho.Models
         public int TurmaID { get; set; }
         public virtual Turma _Turma { get; set; }
 
+        public int FichaDeConselhoID { get; set; }
+        public virtual List<FichaDeConselho> ListaDeConselhos {get;set;}
+
     }
 }
