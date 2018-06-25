@@ -25,50 +25,29 @@ namespace Conselho.Controllers
         {
 
             MeuContexto contexto = new MeuContexto();
-            //DistribuicaoDeAulaViewModel model = new DistribuicaoDeAulaViewModel();
+            DistribuicaoDeAulaViewModel model = new DistribuicaoDeAulaViewModel();
 
-            //model.ListaDisciplinas = contexto.Disciplinas.ToList();
-            ViewBag.ProfessorID = new SelectList(contexto.Professores, "ProfessorID", "Nome");
-            Turma t = contexto.Turmas.Find(id);
+            model.ListaDisciplinas = contexto.Disciplinas.ToList();
+            model.ListaProfessores = contexto.Professores.ToList();
+            model._turma = contexto.Turmas.Find(id);
 
-            List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
+            return View(model);
 
-            List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
 
-            foreach (Disciplina d in disciplinas)
-            {
-                fichas.Add(new FichaDeDistribuicao() { TurmaID = t.TurmaID, DisciplinaID = d.DisciplinaID });
-            }
-
-            return View(fichas);
 
         }
 
         [HttpPost]
-        //public ActionResult DistribuiAula( int idDisciplina,int idTurma, int idProf)
-        public ActionResult AtribuicaoDeAula(IEnumerable<FichaDeDistribuicao> fichas)
-        {
-            MeuContexto contexto = new MeuContexto();
-
-            //List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
-
-            //List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
-
-            //foreach (Disciplina d in disciplinas)
-            //{
-            //    fichas.Add(new FichaDeDistribuicao() { TurmaID = 1, DisciplinaID = d.DisciplinaID });
-            //}
-
-            if(ModelState.IsValid)
+        public ActionResult DistribuiAula( int idDisciplina,int idTurma, int idProf)
             {
+                     MeuContexto contexto = new MeuContexto();
 
-            }
+                     List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
+
+            List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
 
 
-            ViewBag.ProfessorID = new SelectList(contexto.Professores, "ProfessorID", "Nome");
-
-
-            return View(fichas);
+            return View("Index");
         }
 
         public ActionResult AdicionarProfessor(int Id)

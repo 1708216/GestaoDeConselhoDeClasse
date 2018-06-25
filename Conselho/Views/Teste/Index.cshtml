@@ -1,10 +1,53 @@
-﻿@model Conselho.Models.DistribuicaoDeAulaViewModel
+﻿@model IEnumerable<Conselho.Models.Disciplina>
+
 @{
     ViewBag.Title = "Index";
+
 }
 
+<body>
+    <button id="show-dialog" type="button" class="mdl-button">SELECIONAR DISCIPLINA</button>
+
+    <dialog class="mdl-dialog">
+        <p class="mdl-dialog__title">Selecione a disciplina</p>
+        <div class="mdl-dialog__content">
+            @foreach (var item in Model)
+            {
+                <fieldset class="form-group">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="gridRadios" id="@Html.DisplayFor(modelItem => item.DisciplinaID)" value="@Html.DisplayFor(modelItem => item.DisciplinaID)" checked>
+                                <label class="form-check-label" for="gridRadios1">
+                                    @Html.DisplayFor(modelItem => item.Nome)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            }
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Distribuir</button>
+            <button type="button" class="mdl-button close">Cancelar</button>
+        </div>
+    </dialog>
+
+    <script>
+        var dialog = document.querySelector('dialog');
+        var showDialogButton = document.querySelector('#show-dialog');
+
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function () {
+            dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function () {
+            dialog.close();
+        });
+    </script>
+</body>
 
 
-
-<h2>Index</h2>
 

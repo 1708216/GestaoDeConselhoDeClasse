@@ -1,52 +1,57 @@
-﻿@model  IEnumerable<Conselho.Models.FichaDeDistribuicao>
-
+﻿@model  Conselho.Models.DistribuicaoDeAulaViewModel
 @{
 
 }
 <br />
-@using (Html.BeginForm())
-{
-    <div class="jumbotron">
-        <h1 class="display-4">Opa! Deu Certo</h1>
-        <br />
-        @*<p class="display-4">Id: @Model.TurmaID &emsp; Turma: @Model._Turma.Serie  @Model._Turma.Nome    </p>
-        <hr class="my-4">
-        <p class="display-4"> @Model._Turma.Turno</p>*@
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </div>
-    <h3>Dados da distribuição de aula </h3>
+<div class="jumbotron">
+    <h1 class="display-4">Opa! Deu Certo</h1>
     <br />
-    <div class="table">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Id Disciplina </th>
-                    <th scope="col">Nome</th>
-                    <th scope="col">Carga Horária</th>
-                    <th scope="col">Professores</th>
-                </tr>
-            </thead>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.DisciplinaID)</td>
-                    <td>@Html.DisplayFor(modelItem => item._Disciplina.Nome)</td>
-                    <td>@Html.DisplayFor(modelItem => item._Disciplina.CargaHoraria)</td>
+    <p class="display-4">Id: @Model._turma.TurmaID &emsp; Turma: @Model._turma.Serie  @Model._turma.Nome    </p>
+    <hr class="my-4">
+    <p class="display-4"> @Model._turma.Turno</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+<h3>Dados da distribuição de aula </h3>
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id Disciplina </th>
+                <th scope="col">Nome</th>
+                <th scope="col">Carga Horária</th>
+                <th scope="col">Professores</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model.ListaProfessores)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td> <button class="btn btn-default details" data-id="@item.ProfessorID">disciplina</button></td>
+            </tr>
+        }
+    </table>
+</div>
+<div class="modal" id="modal">
+    @{
+        Html.RenderPartial("_testepartial");
+    }
+</div>
 
 
-
-                    <td>
-                        @Html.DropDownList("ProfessorID", null , htmlAttributes : new {@class  = " form-control "})
-                    </td>
-
-                    @*@{
-                        Html.RenderPartial("_adicionarProfessor");
-                    }*@
-
-
-                </tr>
-            }
-        </table>
-        <input type="submit" value="Enviar" />
-    </div>
+@section scripts{
+    <script>
+        $(function () {
+            $(".details").click(function () {
+                var id = $(this).attr("data-id");
+                $("#modal").load("Teste?id=" + id, function () {
+                    $("#modal").modal();
+                })
+            });
+        })
+    </script>
 }
+
+

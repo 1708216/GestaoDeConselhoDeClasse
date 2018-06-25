@@ -15,7 +15,7 @@ namespace Conselho.Controllers
         {
 
             MeuContexto contexto = new MeuContexto();
-            List<FichaDeMatricula> lista = contexto.FichasDeMatricula.ToList(); 
+            List<Disciplina> lista = contexto.Disciplinas.ToList(); 
 
 
             return View(lista);
