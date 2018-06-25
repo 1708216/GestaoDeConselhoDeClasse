@@ -34,23 +34,40 @@ namespace Conselho.Controllers
         public ActionResult EfetivaDistribuicao(int idTurma, int idProf)
         {
             MeuContexto contexto = new MeuContexto();
-            List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
-            List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
 
-            return View("Index");
+            AtribuicaoDeAulaViewModel model = new AtribuicaoDeAulaViewModel();
+
+            model.ListaDisciplinas = contexto.Disciplinas.ToList();
+            model._Professor = contexto.Professores.Find(idProf);
+            model._Turma = contexto.Turmas.Find(idTurma);
+
+            return View(model);
+
         }
 
-        [HttpPost]
-        public ActionResult EfetivaDistribuicao(int idTurma, int idProf, int idDisc)
+        public ActionResult Finaliza(int idTurma, int idProf, int idDisc)
         {
+
             MeuContexto contexto = new MeuContexto();
-            List<Disciplina> disciplinas = contexto.Disciplinas.ToList();
-            List<FichaDeDistribuicao> fichas = new List<FichaDeDistribuicao>();
+            FichaDeDistribuicao ficha = new FichaDeDistribuicao();
 
-            return View("Index");
+            ficha._Disciplina = contexto.Disciplinas.Find(idDisc);
+            ficha._Professor =  contexto.Professores.Find(idProf);
+            ficha._Turma = contexto.Turmas.Find(idTurma);
+
+            contexto.FichasDeDistribuicao.Add(ficha);
+           
+            Turma turma = contexto.Turmas.Find(idTurma);
+            turma._DistribuicaoAula.Add(ficha);
+
+            contexto.SaveChanges();
+
+            Turma parametro = contexto.Turmas.Find(idTurma);
+          
+
+            return RedirectToAction("AtribuicaoDeAula","FichaDeDistribuicao", parametro.TurmaID);
+
         }
-
-
 
     }
 }

@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace Conselho.Models.Dal
 {
-    public class ConselhoDBInitializer : DropCreateDatabaseAlways<MeuContexto>
+    public class ConselhoDBInitializer : DropCreateDatabaseIfModelChanges<MeuContexto>
     {
         protected override void Seed(MeuContexto meuContexto)
         {

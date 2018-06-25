@@ -205,6 +205,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Aluno.cs" />
+    <Compile Include="Models\AtribuicaoDeAulaViewModel.cs" />
     <Compile Include="Models\Dal\ConselhoDBInitializer.cs" />
     <Compile Include="Models\Dal\MeuContexto.cs" />
     <Compile Include="Models\Disciplina.cs" />
@@ -351,6 +352,7 @@
     <Content Include="Views\FichaDeDistribuicao\Index.cshtml" />
     <Content Include="AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
+    <Content Include="Views\FichaDeDistribuicao\EfetivaDistribuicao.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
