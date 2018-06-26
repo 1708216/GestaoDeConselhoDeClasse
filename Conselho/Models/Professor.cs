@@ -10,5 +10,9 @@ namespace Conselho.Models
         public int ProfessorID { get; set; }
         public string Nome { get; set; }
         public bool Situacao { get; set; }
+
+        public int FichaDeDistribuicaoID { get; set; }
+        public List<FichaDeDistribuicao> ListaDeDistribuicao { get; set;}
+
     }
 }

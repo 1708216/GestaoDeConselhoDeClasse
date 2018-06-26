@@ -26,6 +26,7 @@ namespace Conselho.Controllers
             model.ListaDisciplinas = contexto.Disciplinas.ToList();
             model.ListaProfessores = contexto.Professores.ToList();
             model._turma = contexto.Turmas.Find(id);
+      
 
             return View(model);
         }
@@ -60,12 +61,13 @@ namespace Conselho.Controllers
             Turma turma = contexto.Turmas.Find(idTurma);
             turma._DistribuicaoAula.Add(ficha);
 
+            Professor professor = contexto.Professores.Find(idProf);
+            professor.ListaDeDistribuicao.Add(ficha);
+
             contexto.SaveChanges();
 
-            Turma parametro = contexto.Turmas.Find(idTurma);
-          
-
-            return RedirectToAction("AtribuicaoDeAula","FichaDeDistribuicao", parametro.TurmaID);
+    
+            return RedirectToAction("AtribuicaoDeAula","FichaDeDistribuicao",idTurma);
 
         }
 
