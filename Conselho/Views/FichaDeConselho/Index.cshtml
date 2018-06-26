@@ -1,7 +1,43 @@
-﻿
+﻿@model IEnumerable<Conselho.Models.Professor>
+
+
 @{
     ViewBag.Title = "Index";
 }
 
+@*<div class="mdl-tabs__panel is-active" id="professores">
+        @{
+            Html.RenderPartial("_escolhaProfessor");
+        }
+    </div>*@
 
 
+<h3>Dados da distribuição de aula </h3>
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Id Disciplina </th>
+                <th scope="col">Nome</th>
+                <th scope="col">Carga Horária</th>
+                <th scope="col">Professores</th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @Html.ActionLink("Simule", "EscolhaTurmas", new { idProf = item.ProfessorID }, new { @class = "mdl -button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                        </small>
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>

@@ -356,6 +356,10 @@
     <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\EfetivaDistribuicao.cshtml" />
     <Content Include="Views\FichaDeConselho\Index.cshtml" />
+    <Content Include="Views\FichaDeConselho\_escolhaProfessor.cshtml" />
+    <Content Include="Views\FichaDeConselho\_escolhaTurma.cshtml" />
+    <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
+    <Content Include="Views\FichaDeConselho\EscolhaProfessor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

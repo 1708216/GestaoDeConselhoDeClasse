@@ -13,22 +13,40 @@ namespace Conselho.Controllers
         // GET: FichaDeConselho
         public ActionResult Index()
         {
+            MeuContexto contexto = new MeuContexto();
+            List<Professor> professores = contexto.Professores.ToList();
+
+
+            return View(professores);
+        }
+
+        public ActionResult EscolhaProfessor()
+        {
 
             MeuContexto contexto = new MeuContexto();
+            List<Professor> listaDeprofessor = contexto.Professores.ToList();
+            ViewBag.professores = listaDeprofessor;
 
-             ViewBag.professores = contexto.Professores.ToList();
 
             return View();
         }
 
-        public ActionResult SelecionarTurmas( int idProf)
+
+
+        public ActionResult EscolhaTurmas( int idProf)
         {
 
             MeuContexto contexto = new MeuContexto();
             Professor professor = contexto.Professores.Find(idProf);
-            ViewBag.turmas = professor.ListaDeDistribuicao.ToList();
+            IEnumerable<FichaDeDistribuicao> lista = contexto.FichasDeDistribuicao.Where(f => f._Professor.ProfessorID.Equals(idProf));
 
-            return View();
+             //IEnumerable<FichaDeDistribuicao> resultado = from f in contexto.FichasDeDistribuicao
+             //              where f.ProfessorId == idProf
+             //              select f;
+
+           
+
+            return View(lista);
         }
 
 

@@ -1,0 +1,36 @@
+﻿@model  IEnumerable<Conselho.Models.FichaDeDistribuicao>
+
+@{
+    ViewBag.Title = "EscolhaTurmas";
+}
+
+<br />
+<br />
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">@Html.DisplayNameFor(model => model._Turma.TurmaID) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model._Turma.Serie)/@Html.DisplayNameFor(model => model._Turma.Nome) </th>
+                <th scope="col">@Html.DisplayNameFor(model => model._Turma.Turno)</th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item._Turma.TurmaID)</td>
+                <td>@Html.DisplayFor(modelItem => item._Turma.Serie) @Html.DisplayFor(modelItem => item._Turma.Nome)     </td>
+                <td>@Html.DisplayFor(modelItem => item._Turma.Turno)</td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @Html.ActionLink("Iniciar Conselho", "EscolhaTurmas", new { id = item.TurmaID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                        </small>
+                    </p>
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
