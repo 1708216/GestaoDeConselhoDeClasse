@@ -38,11 +38,11 @@ namespace Conselho.Controllers
 
             MeuContexto contexto = new MeuContexto();
             Professor professor = contexto.Professores.Find(idProf);
-            IEnumerable<FichaDeDistribuicao> lista = contexto.FichasDeDistribuicao.Where(f => f._Professor.ProfessorID.Equals(idProf));
+            //var lista = contexto.FichasDeDistribuicao.Where(f => f._Professor.ProfessorID.Equals(idProf));
 
-             //IEnumerable<FichaDeDistribuicao> resultado = from f in contexto.FichasDeDistribuicao
-             //              where f.ProfessorId == idProf
-             //              select f;
+             var resultado = from t in contexto.Turmas._DistribuicaoAula
+                            where t._DistribuicaoAula.E idProf
+                             select t;
 
            
 

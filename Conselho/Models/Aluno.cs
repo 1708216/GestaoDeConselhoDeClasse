@@ -14,6 +14,7 @@ namespace Conselho.Models
 
         public bool Situacao { get; set; }
 
+        public int FichaDeMatriculaID { get; set; }
         public virtual List<FichaDeMatricula> Matriculas {get;set;}
 
     }
