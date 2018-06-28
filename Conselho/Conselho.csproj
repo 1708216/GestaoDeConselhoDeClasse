@@ -360,6 +360,7 @@
     <Content Include="Views\FichaDeConselho\_escolhaTurma.cshtml" />
     <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
     <Content Include="Views\FichaDeConselho\EscolhaProfessor.cshtml" />
+    <Content Include="Views\FichaDeConselho\IniciaConselho.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

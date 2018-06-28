@@ -16,7 +16,6 @@ namespace Conselho.Controllers
             MeuContexto contexto = new MeuContexto();
             List<Professor> professores = contexto.Professores.ToList();
 
-
             return View(professores);
         }
 
@@ -27,10 +26,8 @@ namespace Conselho.Controllers
             List<Professor> listaDeprofessor = contexto.Professores.ToList();
             ViewBag.professores = listaDeprofessor;
 
-
             return View();
         }
-
 
 
         public ActionResult EscolhaTurmas( int idProf)
@@ -40,14 +37,29 @@ namespace Conselho.Controllers
             Professor professor = contexto.Professores.Find(idProf);
             //var lista = contexto.FichasDeDistribuicao.Where(f => f._Professor.ProfessorID.Equals(idProf));
 
-             var resultado = from t in contexto.Turmas._DistribuicaoAula
-                            where t._DistribuicaoAula.E idProf
-                             select t;
+            var resultado = from f in contexto.FichasDeDistribuicao
+                            where f._Professor.ProfessorID.Equals(idProf)
+                            select f;
 
-           
-
-            return View(lista);
+            return View(resultado.ToList());
         }
+
+        public ActionResult IniciaConselho(int idTurma, int idProf)
+        {
+
+            MeuContexto contexto = new MeuContexto();
+            var resultado = contexto.Turmas.Find(idTurma);
+      
+            return View(resultado);
+        }
+
+        public ActionResult AvaliarAlunos()
+        {
+
+            return View(); 
+        }
+
+
 
 
     }
