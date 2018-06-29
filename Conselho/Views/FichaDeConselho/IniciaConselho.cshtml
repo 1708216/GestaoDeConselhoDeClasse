@@ -1,181 +1,63 @@
-﻿@model Conselho.Models.Turma
-
-@{
-    ViewBag.Title = "Details";
-}
+﻿@model Conselho.Models.IniciaConselhoViewModel
 
 <br />
 <div>
-    <h4>Seja Bem Vindo ao conselho de Classe </h4>
-    <h4> @Model.Serie @Model.Nome &emsp; @Model.Turno </h4>
+    <h4>Seja, @Model._Professor.Nome, Bem Vindo ao conselho de Classe </h4>
+    <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno </h4>
 </div>
-
-
-@*<div class="table">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col"> ID </th>
-                    <th scope="col"> Nome do Aluno </th>
-                    <th scope="col"> Situação </th>
-                    <th scope="col"> </th>
-                </tr>
-            </thead>
-            @foreach (var item in Model._Matriculas)
-            {
-                <tr>
-                    <td>@item._Aluno.AlunoID </td>
-                    <td>@item._Aluno.Nome </td>
-                    <td>@item._Aluno.Situacao</td>
-                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AlunoID"></button></td>
-                </tr>
-            }
-        </table>
-    </div>*@
 <br />
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-40" src="http://cosmonerd.com.br/wp-content/uploads/2017/07/os-simpsons-fox-cosmonerd-post.jpg" style="" alt="primeiro">
-        </div>
-
-        @foreach (var item in Model._Matriculas)
+<div class="table">
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col"> ID </th>
+                <th scope="col"> Nome do Aluno </th>
+                <th scope="col"> Situação </th>
+                <th scope="col"> </th>
+            </tr>
+        </thead>
+        @foreach (var item in Model._Turma._Matriculas)
         {
-            <div class="carousel-item">
-                <img class="d-block w-40" src="https://pm1.narvii.com/6406/ec0171f5225e56a1e91c0e7e80e28d60a2a06983_hq.jpg" alt="proximo">
-                <p> @item._Aluno.AlunoID  </p>
-                <p>  @item._Aluno.Nome  </p>
-                <p>@item._Aluno.Situacao></p>
-            </div>
-
+            <tr>
+                <td>@item._Aluno.AlunoID </td>
+                <td>@item._Aluno.Nome </td>
+                <td>@item._Aluno.Situacao</td>
+                <td>
+                    <p class="card-text">
+                        <small class="text-muted">
+                            @*@Html.ActionLink("AVALIAR", "AvaliarAluno", new { idAluno = item.AlunoID })*@
+                            @
+                        </small>
+                    </p>
+                </td>
+            </tr>
         }
-
-        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    </table>
 </div>
 
-<div class="custom-radio">
-    <div><p>O Aluno apresenta problemas muitas Faltas ? </p></div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios1" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Sim
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios2" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Mais ou menos
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios3" value="option3">
-        <label class="form-check-label" for="exampleRadios3">
-            Não
-        </label>
-    </div>
-</div>
-<div class="custom-radio">
-    <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios4" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Sim
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios5" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Mais ou menos
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios6" value="option3">
-        <label class="form-check-label" for="exampleRadios3">
-            Não
-        </label>
-    </div>
-</div>
-<div class="custom-radio">
-    <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios7" value="option1" checked>
-        <label class="form-check-label" for="exampleRadios1">
-            Sim
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios8" value="option2">
-        <label class="form-check-label" for="exampleRadios2">
-            Mais ou menos
-        </label>
-    </div>
-    <div class="form-check-inline">
-        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios9" value="option3">
-        <label class="form-check-label" for="exampleRadios3">
-            Não
-        </label>
-    </div>
-</div>
-<br />
-<div>
-    <button class="btn-info"> Enviar </button>
-</div>
-<br />
 
-@*<div class="modal" id="AlunoID" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title"> TESTES COM MODLA</h5>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>X</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    Aqui vai um parágra para ser visto
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">fechar</button>
-                </div>
-
-
-            </div>
-        </div>
-
-    </div>*@
-
-@*<button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+    <button type="button" class="mdl-button show-modal">Show Modal</button>
     <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title">Allow data collection?</h4>
         <div class="mdl-dialog__content">
             <p>
-                Allowing us to collect data will let us get you the information you want faster.
+                Allow this site to collect usage data to improve your experience?
             </p>
         </div>
-        <div class="mdl-dialog__actions">
+        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
             <button type="button" class="mdl-button">Agree</button>
             <button type="button" class="mdl-button close">Disagree</button>
         </div>
     </dialog>
-
     <script>
         var dialog = document.querySelector('dialog');
-        var showDialogButton = document.querySelector('#show-dialog');
-        if (! dialog.showModal) {
-          dialogPolyfill.registerDialog(dialog);
+        var showModalButton = document.querySelector('.show-modal');
+        if (!dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
         }
-        showDialogButton.addEventListener('click', function() {
-          dialog.showModal();
+        showModalButton.addEventListener('click', function () {
+            dialog.showModal();
         });
-        dialog.querySelector('.close').addEventListener('click', function() {
-          dialog.close();
+        dialog.querySelector('.close').addEventListener('click', function () {
+            dialog.close();
         });
-    </script>*@
+    </script>

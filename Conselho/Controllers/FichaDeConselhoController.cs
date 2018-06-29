@@ -42,16 +42,20 @@ namespace Conselho.Controllers
             return View(resultado.ToList());
         }
 
-        public ActionResult IniciaConselho(int idTurma, int idProf)
+        public ActionResult IniciaConselho(int idTurma, int idProf, int idDis)
         {
 
             MeuContexto contexto = new MeuContexto();
-            var resultado = contexto.Turmas.Find(idTurma);
-      
-            return View(resultado);
+            IniciaConselhoViewModel model = new IniciaConselhoViewModel();
+             
+            model._Turma = contexto.Turmas.Find(idTurma);
+            model._Professor= contexto.Professores.Find(idProf);
+            model._Disiciplina = contexto.Disciplinas.Find(idDis);
+    
+            return View(model);
         }
 
-        public ActionResult AvaliarAlunos()
+        public ActionResult AvaliarAluno()
         {
 
             return View(); 
