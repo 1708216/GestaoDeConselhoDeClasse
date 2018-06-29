@@ -35,8 +35,6 @@ namespace Conselho.Controllers
 
             MeuContexto contexto = new MeuContexto();
             Professor professor = contexto.Professores.Find(idProf);
-            //var lista = contexto.FichasDeDistribuicao.Where(f => f._Professor.ProfessorID.Equals(idProf));
-
             var resultado = from f in contexto.FichasDeDistribuicao
                             where f._Professor.ProfessorID.Equals(idProf)
                             select f;

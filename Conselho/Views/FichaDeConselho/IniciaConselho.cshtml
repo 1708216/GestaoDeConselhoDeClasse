@@ -4,21 +4,41 @@
     ViewBag.Title = "Details";
 }
 
-<div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-5"> ID Turma : @Model.TurmaID</h1>
-        <p class="lead">
-            <h3>
-                @Model.Serie @Model.Nome &emsp; @Model.Turno
-            </h3>
-        </p>
-    </div>
+<br />
+<div>
+    <h4>Seja Bem Vindo ao conselho de Classe </h4>
+    <h4> @Model.Serie @Model.Nome &emsp; @Model.Turno </h4>
 </div>
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+
+@*<div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> ID </th>
+                    <th scope="col"> Nome do Aluno </th>
+                    <th scope="col"> Situação </th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model._Matriculas)
+            {
+                <tr>
+                    <td>@item._Aluno.AlunoID </td>
+                    <td>@item._Aluno.Nome </td>
+                    <td>@item._Aluno.Situacao</td>
+                    <td> <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AlunoID"></button></td>
+                </tr>
+            }
+        </table>
+    </div>*@
+<br />
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="false">
     <div class="carousel-inner">
         <div class="carousel-item active">
             <img class="d-block w-40" src="http://cosmonerd.com.br/wp-content/uploads/2017/07/os-simpsons-fox-cosmonerd-post.jpg" style="" alt="primeiro">
         </div>
+
         @foreach (var item in Model._Matriculas)
         {
             <div class="carousel-item">
@@ -27,7 +47,9 @@
                 <p>  @item._Aluno.Nome  </p>
                 <p>@item._Aluno.Situacao></p>
             </div>
+
         }
+
         <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="sr-only">Previous</span>
@@ -38,9 +60,122 @@
         </a>
     </div>
 </div>
+
+<div class="custom-radio">
+    <div><p>O Aluno apresenta problemas muitas Faltas ? </p></div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios1" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Sim
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios2" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Mais ou menos
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios3" value="option3">
+        <label class="form-check-label" for="exampleRadios3">
+            Não
+        </label>
+    </div>
+</div>
+<div class="custom-radio">
+    <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios4" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Sim
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios5" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Mais ou menos
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios6" value="option3">
+        <label class="form-check-label" for="exampleRadios3">
+            Não
+        </label>
+    </div>
+</div>
+<div class="custom-radio">
+    <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios7" value="option1" checked>
+        <label class="form-check-label" for="exampleRadios1">
+            Sim
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios8" value="option2">
+        <label class="form-check-label" for="exampleRadios2">
+            Mais ou menos
+        </label>
+    </div>
+    <div class="form-check-inline">
+        <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios9" value="option3">
+        <label class="form-check-label" for="exampleRadios3">
+            Não
+        </label>
+    </div>
+</div>
+<br />
+<div>
+    <button class="btn-info"> Enviar </button>
+</div>
 <br />
 
+@*<div class="modal" id="AlunoID" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"> TESTES COM MODLA</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>X</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Aqui vai um parágra para ser visto
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">fechar</button>
+                </div>
 
 
+            </div>
+        </div>
 
+    </div>*@
 
+@*<button id="show-dialog" type="button" class="mdl-button">Show Dialog</button>
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title">Allow data collection?</h4>
+        <div class="mdl-dialog__content">
+            <p>
+                Allowing us to collect data will let us get you the information you want faster.
+            </p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Agree</button>
+            <button type="button" class="mdl-button close">Disagree</button>
+        </div>
+    </dialog>
+
+    <script>
+        var dialog = document.querySelector('dialog');
+        var showDialogButton = document.querySelector('#show-dialog');
+        if (! dialog.showModal) {
+          dialogPolyfill.registerDialog(dialog);
+        }
+        showDialogButton.addEventListener('click', function() {
+          dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+          dialog.close();
+        });
+    </script>*@
