@@ -1,8 +1,10 @@
-﻿@model Conselho.Models.Turma
+﻿@model Conselho.Models.IniciaConselhoViewModel
 
 @{
     ViewBag.Title = "AvaliarAluno";
 }
+
+
 <dialog class="mdl-dialog">
     <div class="mdl-dialog__content">
         <div class="custom-radio">
@@ -60,14 +62,11 @@
 
 <script>
     var dialog = document.querySelector('dialog');
-    var showDialogButton = document.querySelector('#iniciarDialogo');
-
-   
-
+    var showModalButton = document.querySelector('.show-modal');
     if (!dialog.showModal) {
         dialogPolyfill.registerDialog(dialog);
     }
-    showDialogButton.addEventListener('click', function () {
+    showModalButton.addEventListener('click', function () {
         dialog.showModal();
     });
     dialog.querySelector('.close').addEventListener('click', function () {

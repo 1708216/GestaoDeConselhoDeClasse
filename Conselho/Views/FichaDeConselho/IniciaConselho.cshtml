@@ -5,7 +5,7 @@
     <h4>Seja, @Model._Professor.Nome, Bem Vindo ao conselho de Classe </h4>
     <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno </h4>
 </div>
-<br />
+
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -23,12 +23,30 @@
                 <td>@item._Aluno.Nome </td>
                 <td>@item._Aluno.Situacao</td>
                 <td>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            @*@Html.ActionLink("AVALIAR", "AvaliarAluno", new { idAluno = item.AlunoID })*@
-                            @
-                        </small>
-                    </p>
+                    <button type="button" class="btn btn-primary" data-toggle="modal"
+                            data-target="#@item._Aluno.AlunoID" data-backdrop="false">
+                        AVALIAR
+                    </button>
+
+                    <div class="modal fade" id="@item._Aluno.AlunoID" role="dialog">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Aluno: @item._Aluno.AlunoID - @item._Aluno.Nome </h4>
+                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>
+
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </td>
             </tr>
         }
@@ -36,18 +54,129 @@
 </div>
 
 
-    <button type="button" class="mdl-button show-modal">Show Modal</button>
-    <dialog class="mdl-dialog">
-        <div class="mdl-dialog__content">
-            <p>
-                Allow this site to collect usage data to improve your experience?
-            </p>
+
+
+
+
+
+@*<br />
+    <div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> ID </th>
+                    <th scope="col"> Nome do Aluno </th>
+                    <th scope="col"> Situação </th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model._Turma._Matriculas)
+            {
+                <tr>
+                    <td>@item._Aluno.AlunoID </td>
+                    <td>@item._Aluno.Nome </td>
+                    <td>@item._Aluno.Situacao</td>
+                    <td>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                @Html.ActionLink("AVALIAR", "AvaliarAluno", new { idAluno = item.AlunoID })
+                                <button type="button" class="mdl-button show-modal "  >AVALIAR</button>
+                            </small>
+                        </p>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>*@
+
+
+
+@*<!-- Trigger the modal with a button ( O parâmetro no botão fica falso) -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" data-backdrop="false">Modal without Overlay (false)</button>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="myModal2" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Modal without Overlay</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>This modal has no overlay.</p>
+                    <p><strong>Note:</strong> You cannot click outside of this modal to close it.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+
         </div>
-        <div class="mdl-dialog__actions mdl-dialog__actions--full-width">
-            <button type="button" class="mdl-button">Agree</button>
-            <button type="button" class="mdl-button close">Disagree</button>
+    </div>*@
+
+
+
+
+
+@*<dialog class="mdl-dialog">
+        <div class="mdl-dialog__content">
+            <div class="custom-radio">
+                <div><p>O Aluno apresenta problemas muitas Faltas ? </p></div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios1" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Sim
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios3" value="option3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Não
+                    </label>
+                </div>
+            </div>
+            <div class="custom-radio">
+                <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios4" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Sim
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios6" value="option3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Não
+                    </label>
+                </div>
+            </div>
+            <div class="custom-radio">
+                <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios7" value="option1" checked>
+                    <label class="form-check-label" for="exampleRadios1">
+                        Sim
+                    </label>
+                </div>
+                <div class="form-check-inline">
+                    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios9" value="option3">
+                    <label class="form-check-label" for="exampleRadios3">
+                        Não
+                    </label>
+                </div>
+            </div>
+            <br />
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button">Enviar</button>
+            <button type="button" class="mdl-button close">Cancelar</button>
         </div>
     </dialog>
+
+
     <script>
         var dialog = document.querySelector('dialog');
         var showModalButton = document.querySelector('.show-modal');
@@ -60,4 +189,4 @@
         dialog.querySelector('.close').addEventListener('click', function () {
             dialog.close();
         });
-    </script>
+    </script>*@
