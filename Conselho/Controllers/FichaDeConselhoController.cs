@@ -55,13 +55,19 @@ namespace Conselho.Controllers
             return View(model);
         }
 
-        public ActionResult AvaliarAluno()
+        [HttpPost]
+        public ActionResult IniciaConselho(int idTurma, int idProf, int idDis, int Resp1, int Resp2, int Resp3)
         {
 
-            return View(); 
+            MeuContexto contexto = new MeuContexto();
+            IniciaConselhoViewModel model = new IniciaConselhoViewModel();
+
+            model._Turma = contexto.Turmas.Find(idTurma);
+            model._Professor = contexto.Professores.Find(idProf);
+            model._Disiciplina = contexto.Disciplinas.Find(idDis);
+
+            return View(model);
         }
-
-
 
 
     }

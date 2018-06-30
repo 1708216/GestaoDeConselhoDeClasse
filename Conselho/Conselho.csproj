@@ -359,8 +359,6 @@
     <Content Include="Views\FichaDeConselho\Index.cshtml" />
     <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
     <Content Include="Views\FichaDeConselho\IniciaConselho.cshtml" />
-    <Content Include="Views\FichaDeConselho\_avaliaAluno.cshtml" />
-    <Content Include="Views\FichaDeConselho\AvaliarAluno.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

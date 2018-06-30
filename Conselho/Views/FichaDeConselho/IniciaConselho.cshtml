@@ -1,6 +1,11 @@
 ﻿@model Conselho.Models.IniciaConselhoViewModel
 
-<br />
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+  
+
+    <br />
 <div>
     <h4>Seja, @Model._Professor.Nome, Bem Vindo ao conselho de Classe </h4>
     <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno </h4>
@@ -37,23 +42,70 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
                                 <div class="modal-body">
-                                    <p>
-
-                                    </p>
+                                    <div class="custom-radio">
+                                        <div>
+                                            <p>O Aluno apresenta problemas muitas Faltas ? </p>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta1" id="Resp1" value="1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                Sim
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta1" id="Resp8" value="2">
+                                            <label class="form-check-label" for="exampleRadios3">
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-radio">
+                                        <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta2" id="Resp2" value="1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                Sim
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta2" id="Resp2" value="2">
+                                            <label class="form-check-label" for="exampleRadios3">
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="custom-radio">
+                                        <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta3" id="Resp3" value="1" checked>
+                                            <label class="form-check-label" for="exampleRadios1">
+                                                Sim
+                                            </label>
+                                        </div>
+                                        <div class="form-check-inline">
+                                            <input class="form-check-input" type="radio" name="pergunta3" id="Resp3" value="2">
+                                            <label class="form-check-label" for="exampleRadios3">
+                                                Não
+                                            </label>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+                                    <button type="submit" class="btn btn-default">ENVIAR </button>
+                                    @*<a @Html.ActionLink("ENVIAR", "AvaliarAluno", new {idTurma = item._Turma.TurmaID, idAluno=Model._Professor.ProfessorID,idDis = Model._Disiciplina.DisciplinaID})></a>*@
                                 </div>
                             </div>
                         </div>
                     </div>
                 </td>
             </tr>
+
         }
     </table>
 </div>
 
-
+}
 
 
 
