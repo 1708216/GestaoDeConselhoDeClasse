@@ -3,23 +3,21 @@
 
 }
 <br />
-<br />
-<div>
-    <br />
-    RETORNAR
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","EfetivaDistribuicao")'"></button>
-    CANCELAR
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","EfetivaDistribuicao")'"></button>
-</div>
-<br />
 <div class="jumbotron">
 
     <h4>Id: @Model._turma.TurmaID &emsp; Turma: @Model._turma.Serie  @Model._turma.Nome    </h4>
     <hr class="my-4">
     <h3> @Model._turma.Turno</h3>
 </div>
-<h3>Dados da distribuição de aula </h3>
-<br />
+<div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" input type="submit" onclick="location.href='@Url.Action("Index","FichaDeDistribuicao")'">
+        RETORNAR
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" input type="submit" onclick="location.href='@Url.Action("Index","Home")'">
+        CANCELAR
+    </button>
+</div>
+<hr />
 <div class="table">
     <table class="table table-striped">
         <thead>

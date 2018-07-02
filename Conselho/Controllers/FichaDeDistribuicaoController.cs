@@ -67,7 +67,7 @@ namespace Conselho.Controllers
             contexto.SaveChanges();
 
     
-            return RedirectToAction("Index","FichaDeDistribuicao",idTurma);
+            return RedirectToAction("Index","FichaDeDistribuicao");
 
         }
 

@@ -21,14 +21,18 @@
 
 <br />
 
-<div>
-    <h4> Olá Professor(a), @Model._Professor.Nome , Seja Bem vindo(a) ao conselho de Classe</h4>
-    <h4> @Model._Turma.Turno @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
+<div class="jumbotron">
+    <h4> Seja Bem vindo(a), @Model._Professor.Nome !</h4>
+    <h4> Inicie o  Conselho de Classe do: </h4>
+    <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
 </div>
-
 <div>
-    @Html.ActionLink("FINALIZAR", "Index", new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" input type="submit" onclick="location.href='@Url.Action("Index","FichaDeConselho")'">
+        CANCELAR
+    </button>
+    <br />
 </div>
+<hr />
 
 @using (Html.BeginForm("AvaliaAluno", "FichaDeConselho"))
 {
@@ -47,7 +51,7 @@
                     </h2>
                 </div>
                 @Html.ActionLink("ENVIAR", "AvaliaAluno", new { idTurma = item.TurmaID, idAluno = item._Aluno.AlunoID, idDis = Model._Disiciplina.DisciplinaID, idProf = Model._Professor.ProfessorID },
-                            new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+                                 new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
             </div>
         }
 

@@ -3,15 +3,7 @@
 @{
     ViewBag.Title = "EfetivaDistribuicao";
 }
-<div>
-    <br />
-    RETORNAR
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","EfetivaDistribuicao")'"></button>
-    CANCELAR
-    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","EfetivaDistribuicao")'"></button>
-</div>
-
-
+<br />
 <div class="jumbotron">
     <div>
         <h4>   Turma : @Model._Turma.Serie @Model._Turma.Nome @Model._Turma.Turno</h4>
@@ -19,6 +11,13 @@
         <h4>   Professor @Model._Professor.ProfessorID  - @Model._Professor.Nome</h4>
     </div>
 </div>
+<br />
+<div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" input type="submit" onclick="location.href='@Url.Action("Index","Home")'">
+        CANCELAR
+    </button>
+</div>
+<hr />
 <div class="table">
     <table class="table table-striped">
         <thead>
