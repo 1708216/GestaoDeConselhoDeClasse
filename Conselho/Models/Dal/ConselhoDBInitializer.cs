@@ -19,6 +19,7 @@ namespace Conselho.Models.Dal
 
             Professores.Add(new Professor() { Nome = "LUCAS", Situacao = true , Matricula = 123 , Senha="123" });
             Professores.Add(new Professor() { Nome = "MARCELO", Situacao = true ,Matricula = 1234, Senha="1234" });
+            Professores.Add(new Professor() { Nome = "MARIA", Situacao = false, Matricula = 12345, Senha = "12345" });
 
             Disciplinas.Add(new Disciplina() { Nome = "MATEMÁTICA" });
             Disciplinas.Add(new Disciplina() { Nome = "SOCIOLOGIA" });

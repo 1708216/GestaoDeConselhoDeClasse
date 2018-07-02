@@ -10,6 +10,9 @@ namespace Conselho.Controllers
 {
     public class LoginController : Controller
     {
+
+        public  Professor professorLogado { get; set; }
+
         // GET: Login
         public ActionResult Index()
         {
@@ -19,58 +22,54 @@ namespace Conselho.Controllers
         public ActionResult ValidaLogin(int txtLogin, string txtSenha)
         {
 
-            MeuContexto contexto = new MeuContexto();
+                MeuContexto contexto = new MeuContexto();
 
+            var resultado = from p in contexto.Professores
+                            where p.Matricula.Equals(txtLogin)
+                            select p;
 
-
-
-            if (txtLogin.Equals("admin"))
+            if (resultado != null)
             {
-                return RedirectToAction("Index", "Home");
-            }
-            else
-            {
-                try
+                Professor professor = resultado.SingleOrDefault();
+
+                if (professor.Situacao == true)
                 {
-
-                    var professor = (from p in contexto.Professores
-                                   where p.Matricula.Equals(txtLogin)
-                                     select new Professor
-                                   {
-                                       Matricula = p.Matricula,
-                                       ProfessorID = p.ProfessorID,
-                                       Senha = p.Senha                                                                                                                                      
-       
-                                   }).First();
-
-                    if (professor != null)
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    if (professor.Senha.Equals(txtSenha))
                     {
-                        if (professor.Senha.Equals("txtSenha"))
-                        {
-                            return RedirectToAction("Index", "Home");
-
-                        }
-                        else
-                        {
-                            //senha inválida
-                            return View("Index");
-                        }
+                        professorLogado = professor;
+                        return RedirectToAction("IndexProfessor" ,"Home" );
                     }
                     else
                     {
-                        //usuario inválido
                         return View("Index");
                     }
 
                 }
-                catch (Exception)
-                {
-                    return View("Index");
-                }
+            }
+            else
+            {
 
+                return View("Index");
             }
         }
 
 
+        public ActionResult _LoginPartialProfessor()
+        {  
+           Professor professor = professorLogado;
+           LoginPatialViewModel model = new LoginPatialViewModel();
+           model.professor = professor;
+           return View(model);
+
+        }
+
+
+
     }
 }
+
+

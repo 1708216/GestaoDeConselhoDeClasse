@@ -218,6 +218,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IniciaConselhoViewModel.cs" />
     <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\LoginPatialViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MatriculaViaTurmaViewModel.cs" />
     <Compile Include="Models\MatriculaViewModel.cs" />
@@ -356,15 +357,16 @@
     <Content Include="Views\FichaDeMatricula\Index2.cshtml" />
     <Content Include="Views\Teste\Index.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\Index.cshtml" />
-    <Content Include="AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\AtribuicaoDeAula.cshtml" />
     <Content Include="Views\FichaDeDistribuicao\EfetivaDistribuicao.cshtml" />
     <Content Include="Views\FichaDeConselho\Index.cshtml" />
     <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
     <Content Include="Views\FichaDeConselho\IniciaConselho.cshtml" />
-    <Content Include="Views\FichaDeConselho\_avaliaAluno.cshtml" />
     <Content Include="Views\FichaDeConselho\AvaliaAluno.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfessor.cshtml" />
+    <Content Include="Views\Home\IndexProfessor.cshtml" />
+    <Content Include="Views\Home\_LoginPartialProf.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

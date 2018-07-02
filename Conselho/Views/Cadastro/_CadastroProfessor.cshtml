@@ -3,7 +3,7 @@
     ViewBag.Title = "CadastrarProfessor";
 }
 <br />
-@using (Html.BeginForm("CadastrarProfessor", "Professor"))
+@using (Html.BeginForm("Create", "Professor"))
 {
     <div class="form-group arrow">
         @Html.LabelFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
