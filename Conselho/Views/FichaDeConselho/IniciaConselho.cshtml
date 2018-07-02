@@ -22,12 +22,13 @@
 <br />
 
 <div class="jumbotron">
-    <h4> Seja Bem vindo(a), @Model._Professor.Nome !</h4>
-    <h4> Inicie o  Conselho de Classe do: </h4>
-    <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
+    @*<h4> Seja Bem vindo(a), @Model._Professor.Nome !</h4>
+    <h4> Inicie o  Conselho de Classe do: </h4>*@
+    <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno - &emsp; @Model._Disiciplina.Nome</h4>
 </div>
+<hr />
 <div>
-    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" input type="submit" onclick="location.href='@Url.Action("Index","FichaDeConselho")'">
+    <button class=" mdl-button mdl-js-button mdl-button--raised"  input type="submit" onclick="location.href='@Url.Action("Index","FichaDeConselho")'">
         CANCELAR
     </button>
     <br />
