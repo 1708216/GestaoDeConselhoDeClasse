@@ -1,0 +1,94 @@
+﻿@model Conselho.Models.IniciaConselhoViewModel
+
+@{
+    ViewBag.Title = "AvaliaAluno";
+}
+
+@using (Html.BeginForm("AvaliaAluno", "FichaDeConselho"))
+{
+    <div class="container">
+        <h2>Card Header and Footer</h2>
+        <div class="card ">
+            <div class="card-header">
+                TURMA : @Model._Turma.Serie @Model._Turma.Nome @Model._Turma.Turno
+            </div>
+            <div>
+                PROFESSOR : @Model._Professor.ProfessorID @Model._Professor.Nome
+                DISCIPLINA: @Model._Disiciplina.DisciplinaID - @Model._Disiciplina.DisciplinaID
+            </div>
+
+            <div class="card-body">
+                <div>
+                    <img width="200" src="https://www.w3schools.com/bootstrap/img_avatar1.png" />
+                </div>
+                <h4> NOME: @Model._Aluno.Nome  </h4>
+                <h4> ID  : @Model._Aluno.AlunoID </h4>
+                <h4> CGM : @Model._Aluno.CGM </h4>
+            </div>
+            <div class="card-footer">
+                <div class="custom-radio">
+                    <div>
+                        <p>O Aluno apresenta problemas muitas Faltas ? </p>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="2">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Não
+                        </label>
+                    </div>
+                </div>
+                <div class="custom-radio">
+                    <div><p>O Aluno apresenta dificuldades pedagógicos? </p></div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="2">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Não
+                        </label>
+                    </div>
+                </div>
+                <div class="custom-radio">
+                    <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="1" checked>
+                        <label class="form-check-label" for="exampleRadios1">
+                            Sim
+                        </label>
+                    </div>
+                    <div class="form-check-inline">
+                        <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="2">
+                        <label class="form-check-label" for="exampleRadios3">
+                            Não
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-default">ENVIAR</button>
+                        <input type="hidden" id="idAluno" name="idAluno" value="@Model._Aluno.AlunoID" />
+                        <input type="hidden" name="idTurma" value="@Model._Turma.TurmaID" />
+                        <input type="hidden" name="idProf" value="@Model._Professor.ProfessorID" />
+                        <input type="hidden" name="idDis" value="@Model._Disiciplina.DisciplinaID" />
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">
+                            CANCELAR
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+

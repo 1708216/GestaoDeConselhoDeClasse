@@ -197,6 +197,7 @@
     <Compile Include="Controllers\FichaDeDistribuicaoController.cs" />
     <Compile Include="Controllers\FichaDeMatriculaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
@@ -359,6 +360,9 @@
     <Content Include="Views\FichaDeConselho\Index.cshtml" />
     <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
     <Content Include="Views\FichaDeConselho\IniciaConselho.cshtml" />
+    <Content Include="Views\FichaDeConselho\_avaliaAluno.cshtml" />
+    <Content Include="Views\FichaDeConselho\AvaliaAluno.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

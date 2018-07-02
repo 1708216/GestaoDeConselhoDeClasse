@@ -30,7 +30,7 @@ namespace Conselho.Controllers
         }
 
 
-        public ActionResult EscolhaTurmas( int idProf)
+        public ActionResult EscolhaTurmas(int idProf)
         {
 
             MeuContexto contexto = new MeuContexto();
@@ -47,20 +47,6 @@ namespace Conselho.Controllers
 
             MeuContexto contexto = new MeuContexto();
             IniciaConselhoViewModel model = new IniciaConselhoViewModel();
-             
-            model._Turma = contexto.Turmas.Find(idTurma);
-            model._Professor= contexto.Professores.Find(idProf);
-            model._Disiciplina = contexto.Disciplinas.Find(idDis);
-    
-            return View(model);
-        }
-
-        [HttpPost]
-        public ActionResult IniciaConselho(int idTurma, int idProf, int idDis, int Resp1, int Resp2, int Resp3)
-        {
-
-            MeuContexto contexto = new MeuContexto();
-            IniciaConselhoViewModel model = new IniciaConselhoViewModel();
 
             model._Turma = contexto.Turmas.Find(idTurma);
             model._Professor = contexto.Professores.Find(idProf);
@@ -68,6 +54,59 @@ namespace Conselho.Controllers
 
             return View(model);
         }
+
+
+ 
+        public ActionResult AvaliaAluno(int idAluno, int idTurma, int idProf, int idDis)
+        {
+            MeuContexto contexto = new MeuContexto();
+            IniciaConselhoViewModel model = new IniciaConselhoViewModel();
+
+            model._Turma = contexto.Turmas.Find(idTurma);
+            model._Professor = contexto.Professores.Find(idProf);
+            model._Disiciplina = contexto.Disciplinas.Find(idDis);
+            model._Aluno = contexto.Alunos.Find(idAluno);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult AvaliaAluno(int idAluno, int idTurma, int idProf, int idDis, int Resp1, int Resp2, int Resp3)
+        {
+            MeuContexto contexto = new MeuContexto();
+            FichaDeConselho ficha = new FichaDeConselho();
+
+            ficha._Aluno = contexto.Alunos.Find(idAluno);
+            ficha._Professor = contexto.Professores.Find(idProf);
+            ficha._Turma = contexto.Turmas.Find(idTurma);
+            ficha._Disciplina = contexto.Disciplinas.Find(idDis);
+            ficha.Resposta1 = Resp1;
+            ficha.Resposta2 = Resp2;
+            ficha.Resposta3 = Resp3;
+
+             Aluno aluno = contexto.Alunos.Find(idAluno);
+             aluno.ListaDeConselhos.Add(ficha);
+
+             contexto.SaveChanges();
+
+            return RedirectToAction("IniciaConselho");
+        }
+
+
+        //[HttpPost]
+        //public ActionResult IniciaConselho( int idAluno , int idTurma, int idProf, int idDis, int Resp1, int Resp2, int Resp3)
+        //{
+        //    MeuContexto contexto = new MeuContexto();
+        //    IniciaConselhoViewModel model = new IniciaConselhoViewModel();
+
+        //    model._Turma = contexto.Turmas.Find(idTurma);
+        //    model._Professor = contexto.Professores.Find(idProf);
+        //    model._Disiciplina = contexto.Disciplinas.Find(idDis);
+
+        //    return View();
+        //}
+
+
 
 
     }

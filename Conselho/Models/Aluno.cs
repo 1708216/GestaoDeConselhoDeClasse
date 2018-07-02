@@ -17,5 +17,8 @@ namespace Conselho.Models
         public int FichaDeMatriculaID { get; set; }
         public virtual List<FichaDeMatricula> Matriculas {get;set;}
 
+       public int FichaDeConselhoID { get; set; }
+        public virtual List<FichaDeConselho> ListaDeConselhos { get; set; }
+
     }
 }

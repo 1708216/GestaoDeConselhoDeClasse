@@ -1,172 +1,450 @@
 ﻿@model Conselho.Models.IniciaConselhoViewModel
 
 
-@using (Html.BeginForm(FormMethod.Post))
+<style>
+    .demo-card-wide.mdl-card {
+        width: 512px;
+    }
+
+    .demo-card-wide > .mdl-card__title {
+        color: black;
+        font-weight: bold !important;
+        height: 176px;
+        background: url(https://www.w3schools.com/bootstrap/img_avatar1.png) center;
+    }
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+
+<br />
+
+<div>
+    <h4> Olá Professor(a), @Model._Professor.Nome , Seja Bem vindo(a) ao conselho de Classe</h4>
+    <h4> @Model._Turma.Turno @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
+</div>
+
+<div>
+    @Html.ActionLink("FINALIZAR", "Index", new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+</div>
+
+@using (Html.BeginForm("AvaliaAluno", "FichaDeConselho"))
 {
-  
 
     <br />
-<div>
-    <h4>Seja, @Model._Professor.Nome, Bem Vindo ao conselho de Classe </h4>
-    <h4> @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno </h4>
-</div>
-
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col"> ID </th>
-                <th scope="col"> Nome do Aluno </th>
-                <th scope="col"> Situação </th>
-                <th scope="col"> </th>
-            </tr>
-        </thead>
+    <br />
+    <div class="row justify-content-lg-around">
         @foreach (var item in Model._Turma._Matriculas)
         {
-            <tr>
-                <td>@item._Aluno.AlunoID </td>
-                <td>@item._Aluno.Nome </td>
-                <td>@item._Aluno.Situacao</td>
-                <td>
-                    <button type="button" class="btn btn-primary" data-toggle="modal"
-                            data-target="#@item._Aluno.AlunoID" data-backdrop="false">
-                        AVALIAR
-                    </button>
-
-                    <div class="modal fade" id="@item._Aluno.AlunoID" role="dialog">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <!-- Modal content-->
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h4 class="modal-title">Aluno: @item._Aluno.AlunoID - @item._Aluno.Nome </h4>
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="custom-radio">
-                                        <div>
-                                            <p>O Aluno apresenta problemas muitas Faltas ? </p>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta1" id="Resp1" value="1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Sim
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta1" id="Resp8" value="2">
-                                            <label class="form-check-label" for="exampleRadios3">
-                                                Não
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="custom-radio">
-                                        <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta2" id="Resp2" value="1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Sim
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta2" id="Resp2" value="2">
-                                            <label class="form-check-label" for="exampleRadios3">
-                                                Não
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="custom-radio">
-                                        <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta3" id="Resp3" value="1" checked>
-                                            <label class="form-check-label" for="exampleRadios1">
-                                                Sim
-                                            </label>
-                                        </div>
-                                        <div class="form-check-inline">
-                                            <input class="form-check-input" type="radio" name="pergunta3" id="Resp3" value="2">
-                                            <label class="form-check-label" for="exampleRadios3">
-                                                Não
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
-                                    <button type="submit" class="btn btn-default">ENVIAR </button>
-                                    @*<a @Html.ActionLink("ENVIAR", "AvaliarAluno", new {idTurma = item._Turma.TurmaID, idAluno=Model._Professor.ProfessorID,idDis = Model._Disiciplina.DisciplinaID})></a>*@
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
+            <div class="demo-card-wide mdl-card mdl-shadow--2dp col-4 m-1">
+                <br />
+                <div class="mdl-card__title">
+                    <h2 class="mdl-card__title-text bg-white">
+                        @item._Aluno.AlunoID
+                        @item._Aluno.Nome
+                    </h2>
+                </div>
+                @Html.ActionLink("ENVIAR", "AvaliaAluno", new { idTurma = item.TurmaID, idAluno = item._Aluno.AlunoID, idDis = Model._Disiciplina.DisciplinaID, idProf = Model._Professor.ProfessorID },
+                            new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+            </div>
         }
-    </table>
-</div>
 
+    </div>
 }
 
 
 
 
 
-@*<br />
-    <div class="table">
+
+
+@*<style>
+        .demo-card-wide.mdl-card {
+            width: 512px;
+        }
+
+        .demo-card-wide > .mdl-card__title {
+            color: black;
+            font-weight: bold !important;
+            height: 176px;
+            background: url(https://www.w3schools.com/bootstrap/img_avatar1.png) center;
+        }
+
+        .demo-card-wide > .mdl-card__menu {
+            color: #fff;
+        }
+    </style>
+
+    <br />
+    <div>
+        <h4> Olá Professor(a), @Model._Professor.Nome , Seja Bem vindo(a) ao conselho de Classe</h4>
+        <h4> @Model._Turma.Turno @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
+    </div>
+    <div>
+        @Html.ActionLink("FINALIZAR", "Index", new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+    </div>
+
+    @using (Html.BeginForm())
+    {
+
+        <br />
+        <br />
+        <div class="row justify-content-lg-around">
+            @foreach (var item in Model._Turma._Matriculas)
+            {
+                <div class="demo-card-wide mdl-card mdl-shadow--2dp col-4 m-1">
+                    <br />
+                    <div class="mdl-card__title">
+                        <h2 class="mdl-card__title-text bg-white">
+                            @item._Aluno.AlunoID
+                            <input type="hidden" value="@item._Aluno.AlunoID" name="idAluno" />
+                            @item._Aluno.Nome
+                        </h2>
+                    </div>
+                    <div class="mdl-card__supporting-text">
+                        <div class="custom-radio">
+                                <div>
+                                    <p>O Aluno apresenta problemas muitas Faltas ? </p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="2">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="custom-radio">
+                                <div><p>O Aluno apresenta dificuldades pedagógicos? </p></div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="2">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="custom-radio">
+                                <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="2">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="mdl-card__actions mdl-card--border">
+                        <button type="submit" id="@item._Aluno.AlunoID" name="bntSubmit" class="btn btn-default">ENVIAR</button>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+        <script>
+            document.getElementsByName("btnSubmit").onclick = function () {
+
+                var lista = getElementsByName("btnSubmit");
+
+                for (var i = 0; i < lista.length; i++) {
+
+                    if (lista[i].value == id.onclick ) {
+
+                        idAluno = id.onclick;
+
+                    }
+                }
+
+                }
+
+            };
+        </script>*@
+
+
+
+
+@*<a class="">
+        @Html.ActionLink("Edit", "Edit", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
+    </a>*@
+
+
+
+
+@*<div class="table">
         <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col"> ID </th>
                     <th scope="col"> Nome do Aluno </th>
-                    <th scope="col"> Situação </th>
                     <th scope="col"> </th>
                 </tr>
             </thead>
             @foreach (var item in Model._Turma._Matriculas)
             {
                 <tr>
-                    <td>@item._Aluno.AlunoID </td>
-                    <td>@item._Aluno.Nome </td>
-                    <td>@item._Aluno.Situacao</td>
                     <td>
-                        <p class="card-text">
-                            <small class="text-muted">
-                                @Html.ActionLink("AVALIAR", "AvaliarAluno", new { idAluno = item.AlunoID })
-                                <button type="button" class="mdl-button show-modal "  >AVALIAR</button>
-                            </small>
-                        </p>
+                        @item._Aluno.AlunoID
+                    </td>
+                    <td>
+                        @item._Aluno.Nome
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <div class="custom-radio">
+                                <div>
+                                    <p>O Aluno apresenta problemas muitas Faltas ? </p>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp1" id="@item._Aluno.AlunoID" value="1" checked>
+                                    <label class="form-check-label" for="exampleRadios1">
+
+                                        Sim
+                                    </label>
+                                </div>
+                                <div class="form-check-inline">
+                                    <input class="form-check-input" type="radio" name="Resp1" id="@item._Aluno.AlunoID" value="2">
+                                    <label class="form-check-label" for="exampleRadios3">
+                                        Não
+                                    </label>
+                                </div>
+                            </div>
+                            <p class="card-text">
+                                <small class="text-muted">
+                                    @Html.ActionLink("ENVIAR", "AvaliaAluno", new { idTurma = item.TurmaID, idAluno = item._Aluno.AlunoID, idDis = Model._Disiciplina.DisciplinaID, idProf = Model._Professor.ProfessorID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                                </small>
+                            </p>
+                        </div>
+
                     </td>
                 </tr>
+
             }
         </table>
     </div>*@
 
 
 
-@*<!-- Trigger the modal with a button ( O parâmetro no botão fica falso) -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" data-backdrop="false">Modal without Overlay (false)</button>
+@* <button type="submit" class="btn btn-default">ENVIAR</button>
+    <input type="hidden" name="idTurma" value="@Model._Turma.TurmaID" />
+    <input type="hidden" name="idAluno" value="@item._Aluno.AlunoID" />
+    <input type="hidden" name="idProf" value="@Model._Professor.ProfessorID" />
+    <input type="hidden" name="idDis" value="@Model._Disiciplina.DisciplinaID" /> *@
+
+
+
+
+@*< button type = "submit" class="btn btn-default">ENVIAR</button>
+    <input type = "text" id="@item._Aluno.AlunoID" name="idAluno" value="@item._Aluno.AlunoID" />*@
+
+
+@*
+    <br />
+    <div>
+    <h4> Olá Professor(a), @Model._Professor.Nome , Seja Bem vindo(a) ao conselho de Classe</h4>
+    <h4> @Model._Turma.Turno @Model._Turma.Serie @Model._Turma.Nome &emsp; @Model._Turma.Turno</h4>
+    </div>
+    <div>
+    @Html.ActionLink("FINALIZAR", "Index", new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+    </div>
+    <div class="table">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th scope = "col" > ID </ th >
+    < th scope="col"> Nome do Aluno</th>
+    <th scope = "col" > Situação </ th >
+    < th scope="col"> </th>
+    </tr>
+    </thead>
+    @foreach(var item in Model._Turma._Matriculas)
+    {
+    < tr >
+    < td > @item._Aluno.AlunoID </ td >
+    < td > @item._Aluno.Nome </ td >
+    < td >
+        @item._Aluno.Situacao
+
+    </ td >
+    < td >
+        < button type = "button" class="btn btn-primary" data-toggle="modal"
+                data-target="#@item._Aluno.AlunoID" data-backdrop="false">
+            AVALIAR
+        </button>
+        <div class="modal fade" id="@item._Aluno.AlunoID" role="dialog">
+            <div class="modal-dialog modal-dialog-centered">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title"> ID : @item._Aluno.AlunoID Aluno:  @item._Aluno.Nome</h4>
+                        <button type = "button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                    <div class="custom-radio">
+                        <div>
+                            <p>O Aluno apresenta problemas muitas Faltas ? </p>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp1" id="Resp1" value="2">
+                            <label class="form-check-label" for="exampleRadios3">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="custom-radio">
+                        <div><p>O Aluno apresenta dificuldades pedagógicos? </p></div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp2" id="Resp2" value="2">
+                            <label class="form-check-label" for="exampleRadios3">
+                                Não
+                            </label>
+                        </div>
+                    </div>
+                    <div class="custom-radio">
+                        <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="1" checked>
+                            <label class="form-check-label" for="exampleRadios1">
+                                Sim
+                            </label>
+                        </div>
+                        <div class="form-check-inline">
+                            <input class="form-check-input" type="radio" name="Resp3" id="Resp3" value="2">
+                            <label class="form-check-label" for="exampleRadios3">
+                                Não
+                            </label>
+                        </div>
+                        <div class="modal-footer">
+                            <button type = "submit" class="btn btn-default">ENVIAR</button>
+                            <input type = "hidden" value="@item._Aluno.Nome" name="s" />
+                            <button type = "button" class="btn btn-danger" data-dismiss="modal">CANCELAR</button>
+
+                            @*<a @Html.ActionLink("ENVIAR", "AvaliarAluno", new { idAluno = item._Aluno.AlunoID, idTurma = item._Turma.TurmaID, idProf = Model._Professor.ProfessorID, idDis = Model._Disiciplina.DisciplinaID
+    }, "R2", "R3", "R1" )></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </td>
+    </tr>
+
+    }
+    </table>
+    </div>
+*@
+
+
+@*<div class="modal-body">
+    <p>O Aluno apresenta problemas pedagógicos? </p>
+    <input type = "radio" name="Resp1" id="1" value="1">
+    <label for="radio-choice-v-2a">SIM</label>
+    <input type = "radio" name="Resp1" id="1" value="2">
+    <label for="radio-choice-v-2b">NÃO</label>
+    <p>O Aluno apresenta problemas pedagógicos? </p>
+    <input type = "radio" name="Resp2" id="2" value="1">
+    <label for="radio-choice-v-2a">SIM</label>
+    <input type = "radio" name="Resp2" id="2" value="2">
+    <label for="radio-choice-v-2b">NÃO</label>
+    <p>O Aluno apresenta problemas pedagógicos? </p>
+    <input type = "radio" name="Resp3" id="3" value="1">
+    <label for="radio-choice-v-2a">SIM</label>
+    <input type = "radio" name="Resp3" id="3" value="2">
+    <label for="radio-choice-v-2b">NÃO</label>*@
+
+
+
+@*<br />
+    <div class="table">
+    <table class="table table-striped">
+    <thead>
+    <tr>
+    <th scope = "col" > ID </ th >
+    < th scope="col"> Nome do Aluno</th>
+    <th scope = "col" > Situação </ th >
+    < th scope="col"> </th>
+    </tr>
+    </thead>
+    @foreach(var item in Model._Turma._Matriculas)
+    {
+    < tr >
+    < td > @item._Aluno.AlunoID </ td >
+    < td > @item._Aluno.Nome </ td >
+    < td > @item._Aluno.Situacao </ td >
+    < td >
+        < p class="card-text">
+            <small class="text-muted">
+                @Html.ActionLink("AVALIAR", "AvaliarAluno", new { idAluno = item.AlunoID })
+                <button type = "button" class="mdl-button show-modal "  >AVALIAR</button>
+            </small>
+        </p>
+    </td>
+    </tr>
+    }
+    </table>
+    </div>*@
+
+
+
+@*<!-- Trigger the modal with a button(O parâmetro no botão fica falso) -->
+    <button type = "button" class="btn btn-primary" data-toggle="modal" data-target="#myModal2" data-backdrop="false">Modal without Overlay(false)</button>
 
 
     <!-- Modal -->
     <div class="modal fade" id="myModal2" role="dialog">
-        <div class="modal-dialog">
+    <div class="modal-dialog">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Modal without Overlay</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>This modal has no overlay.</p>
-                    <p><strong>Note:</strong> You cannot click outside of this modal to close it.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                </div>
-            </div>
+    <!-- Modal content-->
+    <div class="modal-content">
+    <div class="modal-header">
+    <h4 class="modal-title">Modal without Overlay</h4>
+    <button type = "button" class="close" data-dismiss="modal">&times;</button>
+    </div>
+    <div class="modal-body">
+    <p>This modal has no overlay.</p>
+    <p><strong>Note:</strong> You cannot click outside of this modal to close it.</p>
+    </div>
+    <div class="modal-footer">
+    <button type = "button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+    </div>
 
-        </div>
+    </div>
     </div>*@
 
 
@@ -174,71 +452,72 @@
 
 
 @*<dialog class="mdl-dialog">
-        <div class="mdl-dialog__content">
-            <div class="custom-radio">
-                <div><p>O Aluno apresenta problemas muitas Faltas ? </p></div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios1" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Sim
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios3" value="option3">
-                    <label class="form-check-label" for="exampleRadios3">
-                        Não
-                    </label>
-                </div>
-            </div>
-            <div class="custom-radio">
-                <div><p>O Aluno apresenta dificuldades pedagógicos ? </p></div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios4" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Sim
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios6" value="option3">
-                    <label class="form-check-label" for="exampleRadios3">
-                        Não
-                    </label>
-                </div>
-            </div>
-            <div class="custom-radio">
-                <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios7" value="option1" checked>
-                    <label class="form-check-label" for="exampleRadios1">
-                        Sim
-                    </label>
-                </div>
-                <div class="form-check-inline">
-                    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios9" value="option3">
-                    <label class="form-check-label" for="exampleRadios3">
-                        Não
-                    </label>
-                </div>
-            </div>
-            <br />
-        </div>
-        <div class="mdl-dialog__actions">
-            <button type="button" class="mdl-button">Enviar</button>
-            <button type="button" class="mdl-button close">Cancelar</button>
-        </div>
+    <div class="mdl-dialog__content">
+    <div class="custom-radio">
+    <div><p>O Aluno apresenta problemas muitas Faltas ? </p></div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios1" value="option1" checked>
+    <label class="form-check-label" for="exampleRadios1">
+        Sim
+    </label>
+    </div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta1" id="exampleRadios3" value="option3">
+    <label class="form-check-label" for="exampleRadios3">
+        Não
+    </label>
+    </div>
+    </div>
+    <div class="custom-radio">
+    <div><p>O Aluno apresenta dificuldades pedagógicos? </p></div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios4" value="option1" checked>
+    <label class="form-check-label" for="exampleRadios1">
+        Sim
+    </label>
+    </div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta2" id="exampleRadios6" value="option3">
+    <label class="form-check-label" for="exampleRadios3">
+        Não
+    </label>
+    </div>
+    </div>
+    <div class="custom-radio">
+    <div><p>O Aluno apresenta problemas problemas disciplinares ? </p></div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios7" value="option1" checked>
+    <label class="form-check-label" for="exampleRadios1">
+        Sim
+    </label>
+    </div>
+    <div class="form-check-inline">
+    <input class="form-check-input" type="radio" name="pergunta3" id="exampleRadios9" value="option3">
+    <label class="form-check-label" for="exampleRadios3">
+        Não
+    </label>
+    </div>
+    </div>
+    <br />
+    </div>
+    <div class="mdl-dialog__actions">
+    <button type = "button" class="mdl-button">Enviar</button>
+    <button type = "button" class="mdl-button close">Cancelar</button>
+    </div>
     </dialog>
 
 
     <script>
-        var dialog = document.querySelector('dialog');
-        var showModalButton = document.querySelector('.show-modal');
-        if (!dialog.showModal) {
-            dialogPolyfill.registerDialog(dialog);
-        }
-        showModalButton.addEventListener('click', function () {
-            dialog.showModal();
-        });
-        dialog.querySelector('.close').addEventListener('click', function () {
-            dialog.close();
-        });
+    var dialog = document.querySelector('dialog');
+    var showModalButton = document.querySelector('.show-modal');
+    if (!dialog.showModal) {
+    dialogPolyfill.registerDialog(dialog);
+    }
+    showModalButton.addEventListener('click', function()
+    {
+    dialog.showModal();
+    });
+    dialog.querySelector('.close').addEventListener('click', function () {
+    dialog.close();
+    });
     </script>*@
