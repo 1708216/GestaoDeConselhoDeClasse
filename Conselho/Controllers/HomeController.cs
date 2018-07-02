@@ -9,19 +9,7 @@ namespace Conselho.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
-        {
-
-            LoginController controle = new LoginController();
-            Professor professor = controle.professorLogado;
-
-            LoginPatialViewModel model = new LoginPatialViewModel();
-
-            model.professor = professor;
-
-            return View(model);
-        }
-
+       
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
@@ -36,24 +24,11 @@ namespace Conselho.Controllers
             return View();
         }
 
-        public ActionResult IndexProfessor()
+        public ActionResult Index()
         {
 
             return View();
 
-        }
-
-        public ActionResult _LoginPartialProfessor()
-        {
-
-            LoginController controle = new LoginController();
-            Professor professor = controle.professorLogado;
-
-            LoginPatialViewModel model = new LoginPatialViewModel();
-
-            model.professor = professor;
-
-            return View(model);
         }
 
     }
