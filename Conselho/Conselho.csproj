@@ -197,7 +197,6 @@
     <Compile Include="Controllers\FichaDeDistribuicaoController.cs" />
     <Compile Include="Controllers\FichaDeMatriculaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\TesteController.cs" />
@@ -217,8 +216,6 @@
     <Compile Include="Models\FichaDeMatricula.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IniciaConselhoViewModel.cs" />
-    <Compile Include="Models\Login.cs" />
-    <Compile Include="Models\LoginPatialViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MatriculaViaTurmaViewModel.cs" />
     <Compile Include="Models\MatriculaViewModel.cs" />
@@ -229,7 +226,6 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Views\Login\criancas.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
@@ -363,8 +359,6 @@
     <Content Include="Views\FichaDeConselho\EscolhaTurmas.cshtml" />
     <Content Include="Views\FichaDeConselho\IniciaConselho.cshtml" />
     <Content Include="Views\FichaDeConselho\AvaliaAluno.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutProfessor.cshtml" />
     <Content Include="Views\Home\IndexProfessor.cshtml" />
     <Content Include="Views\Home\_LoginPartialProf.cshtml" />
   </ItemGroup>

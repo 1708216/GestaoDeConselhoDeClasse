@@ -89,7 +89,7 @@ namespace Conselho.Controllers
 
              contexto.SaveChanges();
 
-            return RedirectToAction("IniciaConselho");
+            return RedirectToAction("Index","Home");
         }
 
 
