@@ -9,7 +9,6 @@ namespace Conselho.Controllers
 {
     public class AlunoController : Controller
     {
-        // GET: Aluno
         public ActionResult Index()
         {
             MeuContexto contexto = new MeuContexto();
@@ -18,14 +17,8 @@ namespace Conselho.Controllers
             return View(alunos);
         }
 
-        //  GET: Aluno/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Aluno/Create
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Aluno aluno)
         {
             try
@@ -33,20 +26,22 @@ namespace Conselho.Controllers
                 MeuContexto contexto = new MeuContexto();
                 contexto.Alunos.Add(aluno);
                 contexto.SaveChanges();
-                return RedirectToAction("Index", "Cadastro");
+                return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Cadastro");
             }
         }
 
+   
         // GET: Aluno/Edit/5
         public ActionResult Edit(int id)
         {
             return View();
         }
 
+     
         // POST: Aluno/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
@@ -54,7 +49,6 @@ namespace Conselho.Controllers
             try
             {
                 // TODO: Add update logic here
-
                 return RedirectToAction("Index");
             }
             catch
@@ -63,6 +57,7 @@ namespace Conselho.Controllers
             }
         }
 
+     
         //GET
         public ActionResult Delete(int? id)
         {
@@ -82,6 +77,7 @@ namespace Conselho.Controllers
 
             return View(aluno);
         }
+
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

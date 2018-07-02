@@ -41,11 +41,11 @@ namespace Conselho.Controllers
                 MeuContexto contexto = new MeuContexto();
                 contexto.Disciplinas.Add(disciplina);
                 contexto.SaveChanges();
-                return RedirectToAction("Index", "Cadastro");
+                return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return RedirectToAction("Index", "Cadastro");
             }
         }
 

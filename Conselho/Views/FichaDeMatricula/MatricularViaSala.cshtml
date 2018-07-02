@@ -18,7 +18,8 @@
 
 <h3>Lista de Alunos </h3>
 
-<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp">
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th class="mdl-data-table__cell--non-numeric">Id Aluno</th>
@@ -28,22 +29,21 @@
             <th>Matricular Aluno</th>
         </tr>
     </thead>
-    <tbody>
-        @foreach (var item in Model.alunosParaMatricular)
-        {
-            <tr>
-                <td class="mdl-data-table_____cell--non-numeric"> @item.AlunoID </td>
-                <td>@item.CGM </td>
-                <td>@item.Nome </td>
-                <td>@item.Situacao </td>
-                <td>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            @Html.ActionLink("Efetivar Matricula", "EfetuarMatricula", new { idTurma = Model.turma.TurmaID, idAluno = item.AlunoID })
-                        </small>
-                    </p>
-                </td>
-            </tr>
-        }
-    </tbody>
+    @foreach (var item in Model.alunosParaMatricular)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.AlunoID)</td>
+            <td>@Html.DisplayFor(modelItem => item.CGM)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+            <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+            <td>
+                <p class="card-text">
+                    <small class="text-muted">
+                        @Html.ActionLink("Efetivar Matricula", "EfetuarMatricula", new { idTurma = Model.turma.TurmaID, idAluno = item.AlunoID })
+                    </small>
+                </p>
+            </td>
+        </tr>
+    }
 </table>
+

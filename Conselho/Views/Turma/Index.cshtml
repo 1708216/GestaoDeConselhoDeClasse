@@ -11,7 +11,7 @@
 
     .demo-card-wide > .mdl-card__title {
         color: black;
-        font-weight:bold !important;
+        font-weight: bold !important;
         height: 176px;
         background: url('https://canaldoensino.com.br/blog/wp-content/uploads/2017/09/livros-infantis-downlaod.jpg') center;
     }
@@ -20,6 +20,14 @@
         color: #fff;
     }
 </style>
+<br />
+<br />
+<div>
+    ADICIONAR
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","Cadastro")'">
+        <i class="material-icons glyphicon-bishop">add</i>
+    </button>
+</div>
 <br />
 <div class="row justify-content-center">
     @foreach (var item in Model)
@@ -45,12 +53,12 @@
                     @Html.ActionLink("Delete", "Delete", new { id = item.TurmaID }, new { @class = "mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect btn_cadastrar" })
                 </a>
             </div>
-            <div class="mdl-card__menu">
-                <br />
-                <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-                    <i class="material-icons bg-dark">add</i>
-                </button>
-            </div>
+            @*<div class="mdl-card__menu">
+                    <br />
+                    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                        <i class="material-icons bg-dark">add</i>
+                    </button>
+                </div>*@
         </div>
     }
 </div>

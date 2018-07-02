@@ -4,16 +4,13 @@
     ViewBag.Title = "EfetivaDistribuicao";
 }
 
-
-
-
+<div class="jumbotron">
     <div>
-
-        turma :   @Model._Turma.Serie @Model._Turma.Nome @Model._Turma.Turno
-        professor @Model._Professor.ProfessorID  - @Model._Professor.Nome
-
+        <h4>   Turma :   @Model._Turma.Serie @Model._Turma.Nome @Model._Turma.Turno</h4>
+        <hr />
+        <h4>   Professor @Model._Professor.ProfessorID  - @Model._Professor.Nome</h4>
     </div>
-
+</div>
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -33,7 +30,7 @@
                 <td>
                     <p class="card-text">
                         <small class="text-muted">
-                            @Html.ActionLink("Disciplina", "Finaliza", new { idTurma = Model._Turma.TurmaID, idProf = Model._Professor.ProfessorID, idDisc = item.DisciplinaID }, new { @class = "mdl -button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                            @Html.ActionLink("Disciplina", "Finaliza", new { idTurma = Model._Turma.TurmaID, idProf = Model._Professor.ProfessorID, idDisc = item.DisciplinaID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
                         </small>
                     </p>
                 </td>

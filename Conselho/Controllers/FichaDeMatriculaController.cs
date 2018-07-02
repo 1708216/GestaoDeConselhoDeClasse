@@ -122,6 +122,9 @@ namespace Conselho.Controllers
             Turma turma = contexto.Turmas.Find(idTurma);
             turma._Matriculas.Add(fichaMatricula);
 
+            Aluno aluno = contexto.Alunos.Find(idAluno);
+            aluno.Matriculas.Add(fichaMatricula);
+
             contexto.SaveChanges();
 
             return RedirectToAction("Index");
