@@ -217,6 +217,7 @@
     <Compile Include="Models\FichaDeMatricula.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\IniciaConselhoViewModel.cs" />
+    <Compile Include="Models\Login.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MatriculaViaTurmaViewModel.cs" />
     <Compile Include="Models\MatriculaViewModel.cs" />
@@ -227,6 +228,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Views\Login\criancas.jpg" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
