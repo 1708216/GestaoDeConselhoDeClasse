@@ -4,20 +4,26 @@
     ViewBag.Title = "EscolhaTurmas";
 }
 
-<br />
-<br />
+<style>
 
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+
+<br />
+<br />
 @foreach (var item in Model)
 {
-    <div class="demo-card-wide mdl-card mdl-shadow--4dp">
+    <div class="demo-card-wide mdl-card mdl-shadow--4dp col-6 m-4">
         <div class="mdl-card__title">
-            <h2 class="mdl-card__title-text">Ola, Professor </h2>
+            <h2 class="mdl-card__title-text font-weight-bold">TURMAS </h2>
         </div>
         <div class="mdl-card__supporting-text">
-            Escolha a Turma e disciplina:
-            <p>   </p>
-            <p>@item.TurmaID | @item._Turma.Serie @item._Turma.Nome | @item._Turma.Turno</p>
-            <p>@item._Disciplina.Nome</p>
+            <h3>@item.TurmaID | @item._Turma.Serie @item._Turma.Nome | @item._Turma.Turno</h3>
+            <h3>@item._Disciplina.Nome</h3>
         </div>
         <div class="mdl-card__actions mdl-card--border">
             <small class="text-muted">
