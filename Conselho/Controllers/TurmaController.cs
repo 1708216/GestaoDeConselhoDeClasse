@@ -43,11 +43,11 @@ namespace Conselho.Controllers
                 contexto.Turmas.Add(turma);
                 contexto.SaveChanges();
 
-                return RedirectToAction("Index", "Cadastro");
+                return RedirectToAction("Index");
             }
             catch
             {
-                return View();
+                return View("Index","Cadastro");
             }
         }
 

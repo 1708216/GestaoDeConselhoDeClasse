@@ -4,15 +4,20 @@
 }
 <br />
 <div class="jumbotron">
-    <h1 class="display-4">Opa! Deu Certo</h1>
-    <br />
-    <p class="display-4">Id: @Model._turma.TurmaID &emsp; Turma: @Model._turma.Serie  @Model._turma.Nome    </p>
+
+    <h4>Id: @Model._turma.TurmaID &emsp; Turma: @Model._turma.Serie  @Model._turma.Nome    </h4>
     <hr class="my-4">
-    <p class="display-4"> @Model._turma.Turno</p>
-    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+    <h3> @Model._turma.Turno</h3>
 </div>
-<h3>Dados da distribuição de aula </h3>
-<br />
+<div>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" input type="submit" onclick="location.href='@Url.Action("Index","FichaDeDistribuicao")'">
+        RETORNAR
+    </button>
+    <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" input type="submit" onclick="location.href='@Url.Action("Index","Home")'">
+        CANCELAR
+    </button>
+</div>
+<hr />
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -20,23 +25,23 @@
                 <th scope="col">Id Disciplina </th>
                 <th scope="col">Nome</th>
                 <th scope="col">Carga Horária</th>
-                <th scope="col">Professores</th>
+                <th scope="col"></th>
             </tr>
         </thead>
         @foreach (var item in Model.ListaProfessores)
         {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
-            <td>@Html.DisplayFor(modelItem => item.Nome)</td>
-            <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
-            <td>
-                <p class="card-text">
-                    <small class="text-muted">
-                        @Html.ActionLink("Disciplina", "EfetivaDistribuicao", new { idTurma = Model._turma.TurmaID, idProf=item.ProfessorID  }, new { @class = "mdl -button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
-                    </small>
-                </p>
-            </td>
-        </tr>
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.ProfessorID)</td>
+                <td>@Html.DisplayFor(modelItem => item.Nome)</td>
+                <td>@Html.DisplayFor(modelItem => item.Situacao)</td>
+                <td>
+                    <p class="card-">
+                        <small class="text-muted">
+                            @Html.ActionLink("Disciplina", "EfetivaDistribuicao", new { idTurma = Model._turma.TurmaID, idProf = item.ProfessorID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                        </small>
+                    </p>
+                </td>
+            </tr>
         }
     </table>
 </div>

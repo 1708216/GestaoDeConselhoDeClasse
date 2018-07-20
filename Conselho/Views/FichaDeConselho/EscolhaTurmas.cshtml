@@ -4,56 +4,92 @@
     ViewBag.Title = "EscolhaTurmas";
 }
 
+<style>
+
+
+    .demo-card-wide > .mdl-card__menu {
+        color: #fff;
+    }
+</style>
+
+
 <br />
 <br />
+@foreach (var item in Model)
+{
+    <div class="demo-card-wide mdl-card mdl-shadow--4dp col-6 m-4">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text font-weight-bold">TURMAS </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            <h3>@item.TurmaID | @item._Turma.Serie @item._Turma.Nome | @item._Turma.Turno</h3>
+            <h3>@item._Disciplina.Nome</h3>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <small class="text-muted">
+                @Html.ActionLink("Iniciar Conselho", "IniciaConselho", new { idTurma = item.TurmaID, idProf = item._Professor.ProfessorID, idDis = item._Disciplina.DisciplinaID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+            </small>
+        </div>
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+            </button>
+        </div>
+    </div>
+    <br />
+    <br />
 
-<div class="demo-card-wide mdl-card mdl-shadow--2dp">
-    <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Ola, Professor </h2>
-    </div>
-    <div class="mdl-card__supporting-text">
-     Seja Bem Vindo ao conselho de Classe
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-           Inicie
-        </a>
-    </div>
-    <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-        </button>
-    </div>
-</div>
+}
 
 
-<div class="table">
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th scope="col">@Html.DisplayNameFor(model => model._Turma.TurmaID) </th>
-                <th scope="col">@Html.DisplayNameFor(model => model._Turma.Serie)/@Html.DisplayNameFor(model => model._Turma.Nome) </th>
-                <th scope="col">@Html.DisplayNameFor(model => model._Turma.Turno)</th>
-                <th scope="col">Disciplina</th>
-                <th scope="col"> </th>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>@item.TurmaID  </td>
-                <td>@item._Turma.Serie @item._Turma.Nome</td>
-                <td>@item._Turma.Turno</td>
-                <td>@item._Disciplina.Nome</td>
-                <td>
-                    <p class="card-text">
-                        <small class="text-muted">
-                            @Html.ActionLink("Iniciar Conselho", "IniciaConselho", new { idTurma = item.TurmaID, idProf = item._Professor.ProfessorID , idDis = item._Disciplina.DisciplinaID}, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
-                        </small>
-                    </p>
-                </td>
-            </tr>
-        }
-    </table>
-</div>
+
+@*<div class="demo-card-wide mdl-card mdl-shadow--2dp">
+        <div class="mdl-card__title">
+            <h2 class="mdl-card__title-text">Ola, Professor </h2>
+        </div>
+        <div class="mdl-card__supporting-text">
+            Seja Bem Vindo ao conselho de Classe
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+                Inicie
+            </a>
+        </div>
+        <div class="mdl-card__menu">
+            <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
+                <i class="material-icons">share</i>
+            </button>
+        </div>
+    </div>
+    <br />
+    <br />*@
+@*<div class="table">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(model => model._Turma.TurmaID) </th>
+                    <th scope="col">@Html.DisplayNameFor(model => model._Turma.Serie)/@Html.DisplayNameFor(model => model._Turma.Nome) </th>
+                    <th scope="col">@Html.DisplayNameFor(model => model._Turma.Turno)</th>
+                    <th scope="col">Disciplina</th>
+                    <th scope="col"> </th>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TurmaID  </td>
+                    <td>@item._Turma.Serie @item._Turma.Nome</td>
+                    <td>@item._Turma.Turno</td>
+                    <td>@item._Disciplina.Nome</td>
+                    <td>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                @Html.ActionLink("Iniciar Conselho", "IniciaConselho", new { idTurma = item.TurmaID, idProf = item._Professor.ProfessorID, idDis = item._Disciplina.DisciplinaID }, new { @class = "mdl-button mdl-js-button mdl-button--raised mdl-button--colored btn_cadastrar" })
+                            </small>
+                        </p>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>*@
 

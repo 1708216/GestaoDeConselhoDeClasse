@@ -5,19 +5,15 @@
     ViewBag.Title = "AvaliaAluno";
 }
 
+
+
+
 @using (Html.BeginForm("AvaliaAluno", "FichaDeConselho"))
 {
+    
+    <br />
     <div class="container">
-        <h2>Card Header and Footer</h2>
-        <div class="card ">
-            <div class="card-header">
-                TURMA : @Model._Turma.Serie @Model._Turma.Nome @Model._Turma.Turno
-            </div>
-            <div>
-                PROFESSOR : @Model._Professor.ProfessorID @Model._Professor.Nome
-                DISCIPLINA: @Model._Disiciplina.DisciplinaID - @Model._Disiciplina.DisciplinaID
-            </div>
-
+        <div class="card mdl-shadow--4dp col-6 m-4 ">
             <div class="card-body">
                 <div>
                     <img width="200" src="https://www.w3schools.com/bootstrap/img_avatar1.png" />
@@ -86,8 +82,11 @@
                     </div>
                 </div>
             </div>
+            <br />
         </div>
+      
     </div>
+   
 
 }
 

@@ -6,6 +6,13 @@
 }
 <br />
 <br />
+<div>
+    <br />
+    ADICIONAR
+    <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect " input type="submit" onclick="location.href='@Url.Action("Index","Cadastro")'">
+        <i class="material-icons glyphicon-bishop">add</i>
+    </button>
+</div>
 <div class="table">
     <table class="table table-striped">
         <thead>
@@ -14,7 +21,6 @@
                 <th scope="col">@Html.DisplayNameFor(model => model.CGM)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.Nome)</th>
                 <th scope="col">@Html.DisplayNameFor(model => model.Situacao)</th>
-
             </tr>
         </thead>
         @foreach (var item in Model)
