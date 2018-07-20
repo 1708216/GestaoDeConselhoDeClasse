@@ -88,8 +88,8 @@ namespace Conselho.Controllers
              aluno.ListaDeConselhos.Add(ficha);
 
              contexto.SaveChanges();
-
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("IniciaConselho", new { idTurma = idTurma, idProf = idProf, idDis = idDis });
+           
         }
 
 
